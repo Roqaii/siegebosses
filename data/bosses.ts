@@ -54,11 +54,11 @@ export const BOSSES: Boss[] = [
       {
         phase: 'Tears of the Vale',
         items: [
-          { name: 'Sha Bolt', desc: 'Immerseus fires a Sha Bolt at every enemy, inflicting 19500–20500 Shadow damage to enemies within 5 yards, and forming a Sha Pool at the targeted location. Sha Pools inflict 117000–123000 Shadow damage every second.' },
-          { dodge: true, name: 'Swirl', desc: 'Immerseus causes torrents of Sha-corrupted water to burst from beneath the cracks in the ground. Players that come into contact with the tainted waters will suffer 43875–46125 Shadow damage and be knocked away.' },
-          { role: 'tank', important: true, name: 'Corrosive Blast', desc: 'Immerseus inflicts 877500–922500 Shadow damage in a cone aimed at his primary target, increasing Shadow damage taken by 300% for 45 sec. Stacks.' },
-          { name: 'Seeping Sha', desc: 'Coming into contact with the Seeping Sha that surrounds Immerseus inflicts 146250–153750 Shadow damage and knocks players back.' },
-          { important: true, dodge: true, name: 'Swelling Corruption', desc: 'Immerseus surges with power, gaining stacks of Swelling Corruption proportional to his current Corruption level. This power lashes out at players who strike Immerseus with single target abilities, coalescing into a Congealed Sha creature as well as inflicting Sha Corruption upon the attacker, which deals at least 2500 Shadow damage every 1 sec for 6 sec, increasing in damage rapidly with each additional stack.' },
+          { name: 'Sha Bolt', desc: 'Immerseus fires a Sha Bolt at every enemy, inflicting 19,500–20,500 Shadow damage to enemies within 5 yards, and forming a Sha Pool at the targeted location. Sha Pools inflict 117,000–123,000 Shadow damage every second.' },
+          { dodge: true, name: 'Swirl', desc: 'Immerseus causes torrents of Sha-corrupted water to burst from beneath the cracks in the ground. Players that come into contact with the tainted waters will suffer 43,875–46,125 Shadow damage and be knocked away.' },
+          { role: 'tank', important: true, name: 'Corrosive Blast', desc: 'Immerseus inflicts 877,500–922,500 Shadow damage in a cone aimed at his primary target, increasing Shadow damage taken by 300% for 45 sec. Stacks.' },
+          { name: 'Seeping Sha', desc: 'Coming into contact with the Seeping Sha that surrounds Immerseus inflicts 146,250–153,750 Shadow damage and knocks players back.' },
+          { important: true, dodge: true, name: 'Swelling Corruption', desc: 'Immerseus surges with power, gaining stacks of Swelling Corruption proportional to his current Corruption level. This power lashes out at players who strike Immerseus with single target abilities, coalescing into a Congealed Sha creature as well as inflicting Sha Corruption upon the attacker, which deals at least 2,500 Shadow damage every 1 sec for 6 sec, increasing in damage rapidly with each additional stack.' },
         ],
       },
       {
@@ -170,25 +170,51 @@ export const BOSSES: Boss[] = [
       {
         phase: 'Rook Stonetoe',
         items: [
-          { name: 'Vengeful Strikes', important: true, desc: 'Stuns his current target and deals heavy Physical damage in a frontal cone twice per second for 3 sec. Face away from the raid always.' },
-          { dodge: true, name: 'Clash → Spinning Crane Kick', desc: 'Pulls a random target to him then immediately spins in sustained AoE. Move out of the spin when it begins.' },
-          { interrupt: true, name: 'DM — Embodied Gloom', important: true, desc: 'Casts Corruption Shock — ~300,000 Nature damage to the target and all nearby players. Heroic #1 interrupt priority.' },
+          { role: 'tank', important: true, name: 'Vengeful Strikes', desc: 'Rook Stonetoe enters an offensive stance, stunning his target and inflicting 300,000 Physical damage in a frontal cone twice per second for 3 sec.' },
+          { name: 'Corrupted Brew', desc: 'Rook Stonetoe hurls a keg of Corrupted Brew at a distant target, inflicting 403,750–446,250 Shadow damage to enemies within 5 yards and slowing targets hit by 65% for 15 sec. In Heroic difficulty, every two casts, Corrupted Brew\'s travel time is reduced by half a second. This effect resets when Rook Stonetoe begins his Desperate Measures.' },
+          { dodge: true, name: 'Clash', desc: 'Rook Stonetoe clashes against an enemy, charging each other and meeting halfway. Rook Stonetoe then immediately begins to perform Corruption Kick.', children: [
+            { name: 'Corruption Kick', desc: 'Spins rapidly in a circle, rooting himself and inflicting 157,950–166,050 Physical damage to targets within 10 yards every second for 4 sec. Additionally torments targets struck, inflicting 101,250 Shadow damage every two seconds for 6 sec.' },
+          ]},
+          { important: true, name: 'Desperate Measures — Rook', desc: 'Upon reaching 66% or 33% health remaining, Rook Stonetoe manifests evil forms of his closest friends, making Embodied Misery, Embodied Sorrow, and Embodied Gloom. Once all three spirits are defeated, Rook Stonetoe resumes fighting players.', children: [
+            { name: 'Embodied Misery — Defiled Ground', desc: 'Embodied Misery smashes the ground with fervor, inflicting 460,687–484,312 Physical damage to her current target, knocking them back. This force burns into the ground, inflicting 150,000 Shadow damage every second.' },
+            { name: 'Embodied Sorrow — Inferno Strike', desc: 'Embodied Sorrow casts a massive Fire damage spell at a random target. Inferno Strike divides its Fire damage among all targets within 8 yards.' },
+            { name: 'Embodied Gloom — Corruption Shock', desc: 'Embodied Gloom hurls a bolt of corrupted lightning at several locations, inflicting 316,875–333,125 Nature damage to all enemies within 4 yards.' },
+            { name: 'Shared Torment', desc: 'Embodied Misery, Sorrow, and Gloom share health.' },
+          ]},
         ],
       },
       {
         phase: 'He Softfoot',
         items: [
-          { name: 'Garrote', important: true, desc: 'Shadow-steps behind a random player and applies a permanent stacking bleed for the rest of the fight. Only resets during He\'s DM phase.' },
-          { name: 'Noxious Poison', desc: 'He\'s melee leaves persistent poison puddles on the ground. He tank must keep moving — never stand still in accumulated clouds.' },
-          { name: 'DM — Mark of Anguish', important: true, desc: 'Heroic only. Applies 80% armor reduction for 4 minutes to the holder. Pass via the pre-assigned chain — never give to a tank.' },
+          { important: true, name: 'Garrote', desc: 'Traveling through the shadows, He Softfoot Garrotes targets, inflicting 108,000 Physical damage every 2 sec. This effect is removed when He Softfoot begins his Desperate Measures.' },
+          { name: 'Gouge', desc: 'He Softfoot attempts to gouge the eyes of his target, incapacitating them for 8 sec and fixating on a random target until Taunted. If the target is facing away, Gouge will instead knock them away a short distance.' },
+          { name: 'Master Poisoner', desc: 'He Softfoot is a Master Poisoner and occasionally coats his weapons with various types of poisons. In Heroic Difficulty, Master Poisoner abilities also take effect when using Garrote or Fixate.', children: [
+            { name: 'Noxious Poison', desc: 'He Softfoot coats his weapon in a Noxious Poison, causing successful melee attacks to create pools of poison on the ground, inflicting 150,000 Nature damage every second. These pools may be jumped over. This effect is removed when He Softfoot begins his Desperate Measures.' },
+            { name: 'Instant Poison', desc: 'He Softfoot coats his weapon in an Instant Poison, causing successful melee attacks to inflict 146,250–153,750 additional Nature damage.' },
+          ]},
+          { important: true, name: 'Desperate Measures — He', desc: 'Upon reaching 66% or 33% health remaining, He Softfoot manifests a twisted spirit of his brother, creating Embodied Anguish, which fixates upon the raid member who has the Mark of Anguish. Once this spirit is defeated, He Softfoot resumes fighting players.', children: [
+            { name: 'Mark of Anguish', desc: 'Mark of Anguish periodically inflicts Shadow damage every second and roots the target. The Marked player gains the ability to transfer the Mark to another friendly player. Embodied Anguish\'s gaze moves to a random target upon killing his current target.' },
+            { name: 'Shadow Weakness', desc: 'When Embodied Anguish strikes targets, he applies Shadow Weakness, increasing damage taken by Mark of Anguish. Additionally, passing the Mark of Anguish applies one Shadow Weakness to all players. This effect stacks.' },
+            { name: 'Debilitation', desc: 'Possessing the Mark of Anguish debilitates targets, decreasing their armor by 80% for 4 min.' },
+          ]},
         ],
       },
       {
         phase: 'Sun Tenderheart',
         items: [
-          { name: 'Shadow Word: Bane', important: true, desc: 'Dispellable DoT on 2 random targets that jumps to 2 new targets every 3 seconds. Dispel both within the first 3 seconds.' },
-          { interrupt: true, name: 'Sha Sear', desc: 'Channeled AoE. Heroic: ramps to ~200k on final ticks. Interrupt at the midpoint of the channel (~2.5 sec in).' },
-          { name: 'Calamity', important: true, desc: '5-second cast dealing 30% of every player\'s max HP. Heroic: each successive cast adds +10% damage until Sun\'s DM resets it.' },
+          { important: true, name: 'Shadow Word: Bane', desc: 'Expels a word of misery upon multiple targets, inflicting 135,000 Shadow damage every 3 sec for 18 sec. Each time this effect deals damage, it will jump to an additional target.' },
+          { interrupt: true, name: 'Sha Sear', desc: 'Causes an explosion of Shadow magic around the target, inflicting increasing Shadow damage every second to all enemies within 5 yards around the target.' },
+          { important: true, name: 'Calamity', desc: 'Calls forth a great Calamity, striking all players for 30% of their maximum health as Shadow damage. This also removes Shadow Word: Bane from all targets. In Heroic difficulty, Calamity increases in magnitude by an additional 10% of maximum health each additional time it is cast. This effect resets when Sun Tenderheart begins her Desperate Measures.' },
+          { important: true, name: 'Desperate Measures — Sun', desc: 'Upon reaching 66% or 33% health remaining, Sun Tenderheart manifests an evil form of her protectors, making Embodied Despair and Embodied Desperation. Once both spirits are defeated, Sun Tenderheart resumes fighting players.', children: [
+            { name: 'Dark Meditation', desc: 'Sun Tenderheart enters a Dark Meditation, inflicting Shadow damage to all enemies every half second. Players take 35% less damage from Dark Meditation when inside her Meditative Field.' },
+            { name: 'Manifest Emotions', desc: 'Embodied Despair and Embodied Desperation focus their negative emotions, creating Sha manifestations which attack players. Any damage taken by these manifested emotions will also be suffered by the creature that spawned them.' },
+          ]},
+        ],
+      },
+      {
+        phase: 'Shared',
+        items: [
+          { name: 'Bond of the Golden Lotus', desc: 'Rook Stonetoe, He Softfoot, and Sun Tenderheart share a spiritual bond, linking their fates to each other. Upon reaching 1 health, each of them will begin to cast Bond of the Golden Lotus if any of the other Protectors are still in combat, restoring 30% of maximum health upon completion. Bringing all three Protectors to 1 health simultaneously will restore clarity to their clouded minds.' },
         ],
       },
     ],
@@ -265,10 +291,41 @@ export const BOSSES: Boss[] = [
       {
         phase: 'Amalgam of Corruption',
         items: [
-          { name: 'Self Doubt', important: true, desc: 'Stacking debuff on the current tank. Each stack increases Unleashed Anger damage by 50%. Swap at up to 3 stacks.' },
-          { dodge: true, name: 'Blind Hatred', important: true, desc: 'A corruption zone that slowly rotates. Deals 400,000 Shadow damage per second to anyone in its path.' },
-          { name: 'Fusion', important: true, desc: 'Each Expelled Corruption bolt that reaches the Amalgam increases its damage by 8%. Kill all Essences before they reach the boss.' },
-          { name: 'Icy Fear', desc: 'Constant frost damage to all players — increases as the Amalgam loses health. Soft healing enrage from ~40%.' },
+          { role: 'tank', name: 'Unleashed Anger', desc: 'The Amalgam slashes at its current tank target, inflicting 520,000 Physical damage.' },
+          { role: 'tank', important: true, name: 'Self Doubt', desc: 'The Amalgam inflicts doubt on its current tank target. Self Doubt increases the damage of Unleashed Anger by 50% per application.' },
+          { dodge: true, important: true, name: 'Blind Hatred', desc: 'The Amalgam creates a zone of corruption that extends outward and slowly turns in place. All players caught in the path of the corruption suffer 400,000 Shadow damage every second.' },
+          { important: true, name: 'Fusion', desc: 'Every Expelled Corruption that reaches the Amalgam of Corruption will increase the damage the Amalgam inflicts by 8% for 20 sec.' },
+          { name: 'Icy Fear', desc: 'The Amalgam inflicts 100,000 Frost damage to all players every 3 sec. This damage increases as the Amalgam loses health.' },
+          { important: true, name: 'Frayed', desc: 'When the Amalgam reaches 50% health remaining, and for every 10% health lost thereafter, the Amalgam spawns an Unleashed Manifestation of Corruption.' },
+        ],
+      },
+      {
+        phase: 'Look Within — Player Trials',
+        items: [
+          { name: 'Look Within', desc: 'Players can interact with Purifying Light to Look Within. Doing so transports the player to their own realm where they face a personal challenge based on their role. Successfully completing the challenge will return the player to the normal realm with zero Corruption.' },
+          { name: 'Test of Serenity (DPS)', desc: 'Players of the DPS role must defeat the elements of corruption present. Whenever one of these elements of corruption is defeated, it will be unleashed into the normal realm.', children: [
+            { name: 'Manifestation of Corruption', desc: 'These sha creatures repeatedly cast Tear Reality, which inflicts Shadow damage to all enemies in a cone in front of the caster.' },
+            { name: 'Essence of Corruption', desc: 'These lesser sha creatures repeatedly cast Expel Corruption, which fires a ball of corrupted energies in a straight line, dealing 130,000 Shadow damage to anyone it strikes.' },
+          ]},
+          { name: 'Test of Reliance (Healer)', desc: 'Players of the Healer role must defeat a Greater Corruption. Healers are aided by several allies while Looking Within. Failure will unleash a Manifestation of Corruption to the normal realm.', children: [
+            { name: 'Disheartening Laugh', desc: 'Inflicts Shadow damage to all enemies over 6 sec.' },
+            { name: 'Pit of Despair', desc: 'Inflicts 135,000 Shadow damage every second to all enemies within the area.' },
+            { name: 'Lingering Corruption', desc: 'Inflicts 500,000 Shadow damage if not dispelled from the victim within 10 sec.' },
+          ]},
+          { role: 'tank', name: 'Test of Confidence (Tank)', desc: 'Players of the Tank role must survive for 1 min against a Titanic Corruption.', children: [
+            { name: 'Titanic Smash', desc: 'Inflicts 1,500,000 Shadow damage to anyone in a cone in front of the caster.' },
+            { name: 'Corruption', desc: 'Every successful strike received from the Titanic Corruption inflicts the victim with a stack of Corruption, inflicting 25,000 Shadow damage per application every second.' },
+            { name: 'Hurl Corruption', desc: 'The caster hurls a ball of corruption at their target, inflicting 925,000–1,075,000 Shadow damage.' },
+            { name: 'Burst of Corruption', desc: 'Inflicts 462,500–537,500 Shadow damage to all enemies.' },
+            { name: 'Piercing Corruption', desc: 'Inflicts 800,000 Physical damage to the target. This attack cannot be absorbed.' },
+          ]},
+        ],
+      },
+      {
+        phase: 'Unleashed Adds',
+        items: [
+          { important: true, name: 'Manifestation of Corruption', desc: 'Burst of Anger inflicts 75,000 Shadow damage to all players within the Quarantine Zone. When an Unleashed Manifestation dies, it leaves behind Residual Corruption that periodically inflicts 120,000 Shadow damage to all players until picked up. In Heroic, Residual Corruption gives the soaker 25 Corruption.' },
+          { important: true, dodge: true, name: 'Essence of Corruption — Expel Corruption', desc: 'A ball of corrupted energy travels outward from the caster, inflicting 126,750–133,250 Shadow damage to the first enemy in its path. Every Expelled Corruption that reaches the Amalgam will increase the damage the Amalgam inflicts by 8% for 20 sec.' },
         ],
       },
     ],
@@ -353,18 +410,52 @@ export const BOSSES: Boss[] = [
     ],
     abilities: [
       {
-        phase: 'Pride — Core Mechanic',
+        phase: 'Pride',
         items: [
-          { name: 'Swelling Pride', important: true, desc: 'Cast when boss reaches 100 energy. Deals ~522k Shadow damage and +5 Pride. Secondary effects escalate: Bursting Pride (25–49), Projection (50–74), Aura of Pride (75–99), Overcome (100 = permanent MC).' },
-          { name: 'Mark of Arrogance', important: true, desc: 'DoT on 2 random players dealing ~110k Shadow per tick for the rest of the fight. Only dispel with Gift of the Titans active.' },
-          { name: 'Corrupted Prison', important: true, desc: 'Two non-tank players imprisoned, taking ~108k Shadow per second and +5 Pride per second. Release requires two players on the two lock runes simultaneously.' },
+          { name: 'Pride', desc: 'Players start the encounter with 0 points of Pride. Whenever hit by an ability from the Sha of Pride or one of its minions, players gain 5 Pride. As a player\'s Pride increases to 25, 50, 75 and 100, Swelling Pride will inflict additional effects on that player.' },
+          { name: 'Gift of the Titans', desc: 'Norushen periodically grants players immunity to Pride for 20 sec. In addition, if all players with Gift of the Titans stand within 8 yards of each other, they gain Power of the Titans.', children: [
+            { name: 'Power of the Titans', desc: 'If all players with Gift of the Titans stand within 8 yards of each other, they gain Power of the Titans for 15 sec, increasing haste and all damage and healing done by 15%.' },
+          ]},
+          { important: true, name: 'Swelling Pride', desc: 'When the Sha of Pride reaches 100 energy, it releases a wave of dark energy, inflicting 475,000 Shadow damage to all players, giving them 5 Pride. In addition, Swelling Pride will trigger a secondary effect on any player with 25 or more Pride.', children: [
+            { name: 'Bursting Pride (25–49 Pride)', desc: 'Creates a mass of Sha corruption at their location. After 3 seconds, the corruption explodes, inflicting 405,000 Shadow damage to all players within 4 yards. Any player damaged gains 5 Pride.' },
+            { name: 'Projection (50–74 Pride)', desc: 'A projection forms 15 yards from their current location. Projections explode after 6 seconds, inflicting 300,000 Shadow damage to all players, unless the projection\'s creator is standing within it. Any player damaged gains 5 Pride.' },
+            { name: 'Aura of Pride (75–99 Pride)', desc: 'Afflicts them with Aura of Pride for 25 sec, causing the player to inflict 340,000 Shadow damage to allies within 5 yards every 1 sec. Any player damaged gains 5 Pride.' },
+            { name: 'Overcome (100 Pride)', desc: 'Players reach 100 Pride, increasing their damage and healing done by 50%. Players hit by Swelling Pride while Overcome are permanently mind controlled and have their health increased by 100%.' },
+          ]},
+          { important: true, name: 'Mark of Arrogance', desc: 'The Sha of Pride marks 2 players, inflicting 95,000 Shadow damage every 1 sec, for the remainder of the encounter. This effect stacks. This effect is only removed by single target dispels and gives the dispeller 5 Pride when removed.' },
+          { role: 'tank', name: 'Wounded Pride', desc: 'The Sha of Pride wounds his current target for 15 sec. Wounded players gain 5 Pride whenever they suffer melee damage from the Sha of Pride.' },
         ],
       },
       {
-        phase: 'Heroic-Only Abilities',
+        phase: 'Add Mechanics',
         items: [
-          { name: 'Rifts of Corruption', important: true, desc: 'Every 8 seconds a rift spawns and fires bolts — 350k Shadow + 5 Pride. Close by running over it (applies 60-second debuff). Prioritize rifts near the raid.' },
-          { name: 'Banishment', important: true, desc: 'Random non-tank teleported into Sha Realm. Auto-runs at +50% speed — steer with mouse-look. Avoid instant-death minions. Collect orbs (+25% damage to Fragment). Return when Fragment dies.' },
+          { name: 'Manifestation of Pride', desc: 'The Sha of Pride periodically summons Manifestations of Pride to attack players.', children: [
+            { name: 'Mocking Blast', desc: 'Manifestations of Pride blast a random player, inflicting 300,000 Shadow damage, giving them 5 Pride.' },
+            { name: 'Last Word', desc: 'When a Manifestation of Pride dies, it gives 5 Pride to the 2 closest players.' },
+          ]},
+          { dodge: true, name: 'Self-Reflection', desc: 'The Sha of Pride causes up to 5 players to reflect on their actions, creating a Reflection of Pride at their location. With each tick of Self-Reflection, the Sha focuses on players with higher levels of Pride, only targeting those with 25, 50, and then 75 Pride.', children: [
+            { name: 'Reflection', desc: 'Reflections explode out of the ground at a player\'s location after 2 sec, inflicting 340,000 Shadow damage to all players within 2 yards. Any player damaged gains 5 Pride.' },
+          ]},
+          { important: true, name: 'Corrupted Prison', desc: 'The Sha of Pride activates 2 titan prisons, trapping a player inside each. As the prison activates, it releases a burst of Sha energy that inflicts 340,000 Shadow damage to all players within range, knocking them back and giving them 5 Pride. Imprisoned players are stunned, suffer 108,000 Shadow damage, and gain 5 Pride every second while imprisoned. Players remain stunned until all titan locks surrounding the prison have been activated.' },
+        ],
+      },
+      {
+        phase: 'Heroic — Additional',
+        items: [
+          { important: true, name: 'Banishment', desc: 'The Sha of Pride banishes a random player to the corrupted Sha Realm. Banished players leave behind a physical form of their pride and remain banished until it is destroyed. Players within the Sha realm move 50% faster and are compelled to continually run forward, unable to stop. Coming into contact with corruption within the Sha realm inflicts 350,000 Shadow damage every second. Any player damaged gains 5 Pride.', children: [
+            { name: 'Orb of Light', desc: 'Orbs of Light form within the corrupted Sha realm that heal players for 50% of their maximum health and weaken their corrupt image left behind in the corporeal world. Each orb increases the physical form\'s damage taken by 25%. Stacks.' },
+            { name: 'Ethereal Corruption', desc: 'Ethereal Corruption lurks within the corrupted Sha realm, instantly killing any player it comes into contact with.' },
+          ]},
+          { important: true, dodge: true, name: 'Unstable Corruption', desc: 'The Sha\'s energy tears open Rifts of Corruption every 8 sec. Each rift launches a bolt of corruption at a random player\'s location every 5 sec. Players struck suffer 350,000 Shadow damage and gain 5 Pride. Players can close the rifts, causing them to explode, inflicting 250,000 Shadow damage to all players within 8 yards. Closing a rift afflicts players with Weakened Resolve, preventing them from closing another rift for 1 min.' },
+        ],
+      },
+      {
+        phase: 'Sub-30%',
+        items: [
+          { name: 'Reaching Attack', desc: 'The Sha of Pride strikes at a distant target, inflicting 50% of weapon damage as Shadow and increasing Shadow damage taken by 25% for 8 sec. The Sha uses this ability when no targets are in melee range.' },
+          { important: true, name: 'Unleashed', desc: 'When the Sha of Pride reaches 30% health remaining, it becomes Unleashed, instantly killing Norushen. The remaining power inflicts 330,000 Shadow damage every 10 seconds for the remainder of the encounter. Players gain 5 Pride each time they are damaged by Unleashed.', children: [
+            { name: 'Final Gift', desc: 'As Norushen dies, he purifies all players, reducing their Pride to zero.' },
+          ]},
         ],
       },
     ],
@@ -439,11 +530,33 @@ export const BOSSES: Boss[] = [
     ],
     abilities: [
       {
-        phase: 'Phase 1 — Ground Adds',
+        phase: 'Phase 1 — Ranking Officials',
         items: [
-          { name: 'Healing Tide Totem', important: true, desc: 'Dropped by Tidal Shaman. Heals nearby enemies for 10–20% max HP every 3 seconds. #1 kill target — very low HP.' },
-          { name: 'Bonecrusher — Fracture', important: true, desc: 'Charges a faction leader NPC, dealing 10% of their HP per second. Interrupt Fracture by stunning the Bonecrusher instantly.' },
-          { dodge: true, name: 'Flames of Galakrond (Phase 2)', important: true, desc: 'Orb fired at a random player. Explodes for up to 900k reduced by each player it passes through. Targeted player steps behind the raid.' },
+          { name: 'Master Cannoneer Dagryn', desc: 'Shoots at random players nearby, inflicting heavy damage. Also unleashes a muzzle flare with Muzzle Spray, inflicting 195,000–205,000 Physical damage multiple times per second and knocking players back with each hit.' },
+          { name: 'Lieutenant General Krugruk', desc: 'With a mighty stomp, Thunder Clap shatters the ground, slowing nearby players\' movement speed (stacks). Arcing Smash inflicts 438,750–461,250 Physical damage to players in a frontal cone and knocks them back.' },
+          { role: 'tank', name: 'High Enforcer Thranok', desc: 'Shattering Strike inflicts 250% normal damage to his primary target and nearby targets. Crusher\'s Call hooks 5 random players within 45 yards, pulling them to his feet, then immediately performs Skull Cracker, inflicting 975,000–1,025,000 Physical damage to all players within 10 yards.' },
+          { name: 'Korgra the Snake', desc: 'Poison-Tipped Blades inflict 9,750–10,250 Nature damage every 1 sec to her primary target (stacks). Poison Cloud creates a smoky poison cloud at her feet inflicting 73,125–76,875 Nature damage every second. Curse of Venom: when low health she transforms into a snake, casting a deadly poison bolt volley until defeated.', children: [
+            { name: 'Dragonmaw Ebon Stalker', desc: 'Upon Korgra\'s command, stealthed units emerge from the shadows behind a random target, stabbing wildly. Any victims standing within range suffer critical Physical damage.' },
+          ]},
+        ],
+      },
+      {
+        phase: 'Phase 1 — Foot Soldiers',
+        items: [
+          { important: true, name: 'Dragonmaw Tidal Shaman', desc: 'The Dragonmaw Tidal Shaman will cast healing spells on allies and summon violent Tidal waves. Healing Tide Totem heals nearby allies for 20% of their total health every 3 seconds for 12 sec.' },
+          { important: true, name: 'Dragonmaw Bonecrusher', desc: 'These deadly warriors charge to a distant faction leader, stunning them. Fracture inflicts 10% of the leader\'s health every second while they are stunned.' },
+          { name: 'Dragonmaw Flagbearer', desc: 'Dragonmaw Flagbearers drop a banner that increases melee, ranged, and spell casting speed by 50% and increases damage dealt by 50% for all friendly targets within 15 yards for 2 min.' },
+          { name: 'Dragonmaw Flameslinger', desc: 'These deadly archers shoot fire-tipped arrows at random players, inflicting Fire damage on impact and burning the ground and any players standing within.' },
+          { name: 'Dragonmaw Wind Reaver', desc: 'Dragonmaw Wind Reavers hurl axes at random players inflicting Physical damage. They also net random players, rooting them in place.' },
+          { dodge: true, name: 'Dragonmaw Proto-Drake', desc: 'Dragonmaw Proto-Drakes channel a frontal cone of flame on their enemies.' },
+          { name: 'Kor\'kron Demolisher', desc: 'Warlord Zaela turns her siege weapons against her own towers, bombarding those inside. Bombard inflicts 341,250–358,750 Physical damage and knocks down players inside the bombarded tower.' },
+        ],
+      },
+      {
+        phase: 'Phase 2 — Galakras',
+        items: [
+          { important: true, dodge: true, name: 'Flames of Galakrond', desc: 'Galakras spews the raw Flames of Galakrond at a random player. Each player through which it passes will suffer 30,000 Fire damage every 1 second. However, each player it passes through will decrease the severity of the flames, reducing the damage it deals to subsequent players. When the ball of flame reaches its final destination it will erupt, inflicting 877,500–922,500 Fire damage to all players. This damage is also reduced for each player that diminishes the Flame.' },
+          { important: true, name: 'Pulsing Flames', desc: 'Galakras erupts with molten fury, inflicting 34,125–35,875 Fire damage to all players. Each pulse increases Galakras\' Fire damage dealt by 5%.' },
         ],
       },
     ],
@@ -521,17 +634,24 @@ export const BOSSES: Boss[] = [
       {
         phase: 'Assault Mode',
         items: [
-          { name: 'Flame Vents', important: true, desc: 'Frontal cone dealing heavy Fire damage to the current tank. Applies Ignite Armor: +10% Fire damage taken. Stacks. Swap rotation: 2 stacks on first set, 3 stacks every set after.' },
-          { name: 'Crawler Mines', important: true, desc: 'Three mines spawn, arm after 15 seconds. All three detonating freely is near-fatal. Stomp a mine: deals ~1.5M Physical damage (armor-reduced) to the soaker. Dedicated cooldown required on Heroic.' },
-          { name: 'Ricochet', important: true, desc: 'Heroic only. Spinning sawblade arcs in a triangle toward two ranged players. Sidestep two or three steps when it fires — blade targets your position at launch.' },
+          { dodge: true, name: 'Borer Drill', desc: 'The Iron Juggernaut bores its drill arm into the ground, causing the earth to crack and shatter. This effect ripples out into many directions, inflicting 146,250–153,750 Physical damage to those caught within its effect.' },
+          { name: 'Laser Burn', desc: 'The Iron Juggernaut\'s tail cannon focuses briefly on random players, inflicting 341,250–358,750 Fire damage and searing their flesh for an additional 73,125–76,875 Fire damage every 2 seconds.' },
+          { name: 'Mortar Cannon', desc: 'The Iron Juggernaut\'s top cannon launches shrapnel and explosives at a random player, inflicting 341,250–358,750 Fire damage to enemies within 8 yards of the blast.' },
+          { important: true, name: 'Crawler Mines', desc: 'The Iron Juggernaut releases several Crawler Mines that scurry toward random players, burying themselves into the ground. At the end of a detonation sequence, they detonate for 779,999–820,000 Physical damage to all players. A brave player may stomp a burrowed Mine, stifling the explosion but causing a localized detonation inflicting 1,462,501–1,537,501 Physical damage and knocking the player high into the air.' },
+          { dodge: true, name: 'Ricochet', desc: 'The Iron Juggernaut launches a sawblade from its arm, causing 341,250–358,750 Physical damage to players that come into contact with the blade as it whirls and ricochets between distant players.' },
+          { role: 'tank', important: true, name: 'Flame Vents', desc: 'The Iron Juggernaut emits flame from its frontal vents, inflicting 390,000–410,000 Fire damage in a frontal cone. This effect applies Ignite Armor, increasing damage taken by Fire effects and searing the target\'s flesh for 39,000–41,000 damage every 1 second. This effect stacks.' },
         ],
       },
       {
         phase: 'Siege Mode',
         items: [
-          { name: 'Shock Pulse', important: true, desc: 'Knocks all players back ~60–80 yards on Heroic. Three occur per Siege Phase. Stack in melee range before the cast — everyone lands together in the far corner, out of Mortar Barrage range.' },
-          { name: 'Mortar Barrage', important: true, desc: 'Heroic only. Fires six to eight rapid mortar blasts at player locations within ~60 yards. Avoided entirely by staying out of range from the far corner.' },
-          { name: 'Cutter Laser', desc: 'Tail cannon locks onto a random player and chases them. Kite along the outer wall. Never run through Explosive Tar — laser contact triggers a ~500k raid-wide explosion.' },
+          { important: true, name: 'Seismic Activity', desc: 'The Iron Juggernaut drills deep into the earth, causing a violent earthquake inflicting 75,074–78,925 Nature damage every 1 second to all players. The seismic activity causes intermittent Shock Pulses.', children: [
+            { name: 'Shock Pulse', desc: 'Shock Pulse causes a wave of force that knocks players back significantly.' },
+          ]},
+          { name: 'Demolisher Cannons', desc: 'The shoulder-mounted turrets fire high into the sky over random players, inflicting 195,000–205,000 Fire damage to players within 6 yards of each blast.' },
+          { dodge: true, name: 'Cutter Laser', desc: 'The Iron Juggernaut\'s tail cannon traces the ground as it chases each target. The laser inflicts 292,500–307,500 Fire damage every 1 sec to players with which it comes into contact.' },
+          { dodge: true, important: true, name: 'Explosive Tar', desc: 'The Iron Juggernaut spews tar in all directions. Standing in tar deals 48,750–51,250 Nature damage every 1 second and reduces movement speed by 30%. If a tar puddle comes into contact with the flames of the Cutter Laser, the puddle will explode, inflicting 438,750–461,250 Fire damage to all players.' },
+          { important: true, name: 'Mortar Barrage', desc: 'The Iron Juggernaut\'s top cannon rapidly fires numerous Mortar Blasts towards one side, dealing 438,750–461,250 Fire damage to players within 8 yards of each blast.' },
         ],
       },
     ],
@@ -618,17 +738,38 @@ export const BOSSES: Boss[] = [
       {
         phase: 'Shared',
         items: [
-          { name: 'Froststorm Strike', important: true, desc: 'Stacking tank debuff. Swap at 5–6 stacks. Each stack increases Froststorm damage by 25%. Heroic: melee swing and strike can land simultaneously — use cooldowns at 4 stacks.' },
-          { name: 'Blood Frenzy (sub-25%)', important: true, desc: 'Both bosses gain +25% damage and haste. Pop Bloodlust immediately.' },
+          { name: 'Spirit Link', desc: 'Damage dealt is shared between Earthbreaker Haromm and Wavebinder Kardris.' },
+          { important: true, name: 'Bloodlust', desc: 'When the Dark Shaman reach 25% health remaining, they go into a blood frenzy, increasing all damage dealt by 25% and haste by 25%.' },
+          { name: 'Wolves — Darkfang and Bloodclaw', desc: 'The riding wolves of the Dark Shaman will viciously defend their masters.', children: [
+            { name: 'Swipe', desc: 'Inflicts 254,375–295,625 Physical damage to targets in an 8-yard cone in front of the caster.' },
+            { name: 'Rend', desc: 'Viciously rends a player, causing them to bleed for 27,500 Physical damage every 1 sec for 15 sec. This effect stacks.' },
+          ]},
         ],
       },
       {
-        phase: 'Heroic-Only',
+        phase: 'Earthbreaker Haromm',
         items: [
-          { name: 'Iron Prison (Kardris)', important: true, desc: '60-second debuff that kills the target on expiry for 100% max HP. Use a personal defensive just before the mark expires.' },
-          { name: 'Iron Tomb (Haromm)', desc: 'Permanent terrain obstacles that accumulate throughout the fight. Step out immediately; push them to the walls.' },
-          { name: 'Foul Geyser + Slimes (Kardris — 65%)', important: true, desc: 'Tank channels projectiles at the tank for 8 seconds. Each landed projectile spawns a Foul Slime with a heavy Nature aura within 3 yards. All DPS burn slimes from range immediately.' },
-          { name: 'Falling Ash (Kardris — 50%)', important: true, desc: '~1M fire inside the circle, ~480k raid-wide outside. Haromm group must use personal cooldowns on every cast.' },
+          { role: 'tank', important: true, name: 'Froststorm Strike', desc: 'Strikes a player with frost-lined weapons, inflicting 400,000 Frost damage and causing the player to take 25% additional damage from Froststorm Strike for 30 sec. This effect stacks.' },
+          { important: true, name: 'Toxic Mist', desc: 'Injects several players with a toxic mist, inflicting 150,000 Nature damage every 3 sec for 30 sec and causing growing Toxicity. Pierces all immunities. Granted by Poisonmist Totem (85%).', children: [
+            { name: 'Toxicity', desc: 'Increases Nature damage taken by 10% per stack.' },
+          ]},
+          { name: 'Foul Stream', desc: 'A stream of foul liquid inflicts 400,000 Nature damage to all enemies on a line. Granted by Foulstream Totem (65%).' },
+          { name: 'Ashen Wall', desc: 'Summons a line of stationary Ash Elementals that attack nearby enemies. Granted by Ashflare Totem (50%).' },
+          { important: true, name: 'Iron Tomb', desc: 'Inflicts 500,000 Physical damage to players within 3 yards and creates a permanent Iron Tomb terrain obstacle. Granted by Rusted Iron Totem (95%).' },
+        ],
+      },
+      {
+        phase: 'Wavebinder Kardris',
+        items: [
+          { name: 'Froststorm Bolt', desc: 'Fires a bolt of bitter frost, inflicting 600,000 Frost damage.' },
+          { important: true, name: 'Toxic Storm', desc: 'Summons a powerful toxic storm inflicting 450,000 Nature damage to players within 9 yards every 2 sec and periodically creating Toxic Tornadoes. The storm moves and lasts 1 min. Granted by Poisonmist Totem (85%).', children: [
+            { name: 'Toxic Tornado', desc: 'Toxic winds inflict 450,000 Nature damage to players within 5 yards every 1 sec and knock them up.' },
+          ]},
+          { important: true, name: 'Foul Geyser', desc: 'Conjures foul water inflicting 450,000 Nature damage to players within 4 yards every 1 sec for 8 sec. Each splash creates a Foul Slime. Granted by Foulstream Totem (65%).', children: [
+            { name: 'Foul Slime — Foulness', desc: 'Foul Slimes are coated in Foulness, inflicting 150,000 Nature damage to players within 3 yards every 1 sec.' },
+          ]},
+          { important: true, name: 'Falling Ash', desc: 'Summons a core of smouldering ash that falls over 15 sec, inflicting 450,000 Fire damage to all players on impact. Granted by Ashflare Totem (50%).' },
+          { important: true, name: 'Iron Prison', desc: 'Encases the player in a prison of iron that slowly asphyxiates them, inflicting 100% of maximum health as Physical damage after 1 min. Granted by Rusted Iron Totem (95%).' },
         ],
       },
     ],
@@ -703,16 +844,33 @@ export const BOSSES: Boss[] = [
       {
         phase: 'Stances',
         items: [
-          { name: 'Defensive Stance', important: true, desc: 'Nazgrim takes 10% less damage and generates 3 Rage every time he is struck. Exception: the debuffed tank does not cause Rage gain. All other players must stop attacking.' },
-          { name: 'Berserker Stance', desc: 'Deals and takes 25% more damage. All Rage from abilities is doubled. DPS cooldowns go here.' },
+          { name: 'Battle Stance', desc: 'A balanced stance that generates 1 Rage every 1 sec.' },
+          { name: 'Berserker Stance', desc: 'A wild stance that increases damage dealt by 25%, damage taken by 25%, and Rage generated by 100%.' },
+          { important: true, name: 'Defensive Stance', desc: 'A defensive stance that reduces damage taken by 10% and grants 2 Rage when struck. Attacks by players affected by Sundering Blow do not cause Nazgrim to generate Rage.' },
         ],
       },
       {
-        phase: 'Rage Abilities',
+        phase: 'Boss Abilities',
         items: [
-          { name: 'Kor\'kron Banner', important: true, desc: 'Costs 50 Rage. Every add attack through the banner gives 3 Rage. Destroy within 3 seconds. One DPS permanently owns this role.' },
-          { name: 'Ravager', important: true, desc: 'Costs 100 Rage. Permanent spinning axe for the rest of the fight. Keep Rage below 100 at all times.' },
-          { name: 'Sundering Blow', important: true, desc: 'Generates 5 Rage plus 5 per existing stack. Swap at 3 stacks — a 4th costs 20 Rage (40 in Berserker).' },
+          { role: 'tank', important: true, name: 'Sundering Blow', desc: 'A powerful strike inflicts 1,200,000 Physical damage and sunders the target\'s armor, reducing armor by 10% for 30 sec. Generates 5 Rage plus 5 additional Rage per stack of Sundering Blow on the target.' },
+          { name: 'Bonecracker', desc: 'Flings a heavy mace at a player to crack their bones, reducing maximum health by a percentage and causing the player to bleed for 75,000 Physical damage every 1 sec for 30 sec.' },
+          { role: 'tank', important: true, name: 'Execute', desc: 'Executes a player for 3,000,000 Physical damage. This attack pierces immunities and cannot be dodged, blocked, or parried.' },
+          { dodge: true, name: 'Heroic Shockwave', desc: 'Leaps at a player, inflicts 400,000 Physical damage within 10 yards of the impact location and causes three Aftershocks. Costs 30 Rage.', children: [
+            { name: 'Aftershock', desc: 'The ground cracks between General Nazgrim\'s impact location and a player target. After several seconds, the cracks erupt, inflicting 700,000 Fire damage to players within the Aftershock and granting General Nazgrim 3 Rage for each player struck.' },
+          ]},
+          { important: true, name: 'Kor\'kron Banner', desc: 'Places a banner that causes allies\' attacks to generate 3 Rage for General Nazgrim. Costs 50 Rage.' },
+          { important: true, name: 'War Song', desc: 'Unleashes a hellish scream, inflicting 65% of maximum health as Physical damage to all players. Costs 70 Rage.' },
+          { important: true, name: 'Ravager', desc: 'Throws a whirling blade that lasts for the duration of the battle. The Ravager inflicts 370,000–430,000 Physical damage to enemies within 6 yards every 1 sec, granting General Nazgrim 5 Rage for each enemy struck. Costs 100 Rage.' },
+        ],
+      },
+      {
+        phase: 'Add Types',
+        items: [
+          { name: 'Kor\'kron Ironblade', desc: 'Kor\'kron Ironblades wield a fierce two-handed blade. Ironstorm: whirls in a storm of iron inflicting 370,000–430,000 Physical damage to players within 7 yards every 1 sec for 1 min. Uses Last Stand at 50% health.' },
+          { interrupt: true, name: 'Kor\'kron Arcweaver', desc: 'Kor\'kron Arcweavers have mastered the arcane arts. Arcane Shock inflicts 277,500–322,500 Arcane damage and increases their Arcane damage by 25% per stack. Magistrike calls down Arcane energy inflicting 277,500–322,500 Arcane damage instantly.' },
+          { name: 'Kor\'kron Assassin', desc: 'Kor\'kron Assassins begin in stealth and fixate on a non-tank target. Backstab inflicts 624,375–725,625 Physical damage but only when attacking from behind.' },
+          { important: true, name: 'Kor\'kron Warshaman', desc: 'Kor\'kron Warshaman aid their allies. Earth Shield heals the target 5% max health when damaged. Empowered Chain Heal heals an ally for 10% max health chaining to 5 targets with +50% per jump. Healing Tide Totem heals allies within 8 yards for 30% max health every 3 sec.' },
+          { name: 'Kor\'kron Sniper', desc: 'Kor\'kron Snipers fixate on a non-tank target. Multi-Shot fires a volley inflicting 400,000 Physical damage to enemies within a 40-yard cone.' },
         ],
       },
     ],
@@ -783,19 +941,29 @@ export const BOSSES: Boss[] = [
     ],
     abilities: [
       {
-        phase: 'Phase 1',
+        phase: 'Phase 1 — Ancient Miasma',
         items: [
-          { name: 'Ancient Miasma', important: true, desc: 'All healing replaced by absorption shields for Phase 1. Direct heals are wasted. Healers must use shield/absorb toolkit exclusively.' },
-          { name: 'Imploding Energy', important: true, desc: 'Three circles spawn every ~20 seconds. Each must be soaked by exactly one player or detonates for ~700k to all. Pre-assign soakers.' },
-          { name: 'Arcing Smash + Breath', important: true, desc: 'Three cone smashes followed by an unmarked re-explosion of all three smash locations for ~1.6M Shadow. Mark smash positions as they land.' },
-          { name: 'Essence of Y\'Shaarj (Heroic)', important: true, desc: 'Persistent orbs on the ground that strip your entire shield on contact and deal 150k directly to health. Treat as permanent lethal terrain.' },
+          { important: true, name: 'Ancient Miasma', desc: 'An Ancient Miasma fills the room, absorbing all healing received but creating an Ancient Barrier that absorbs damage equal to the amount of healing absorbed, up to a cap of 100% of maximum health. In addition, the Miasma inflicts 40,500 Shadow damage every 2 sec.', children: [
+            { name: 'Ancient Barrier', desc: 'Whenever Ancient Miasma absorbs healing it creates an Ancient Barrier on the player, absorbing damage equal to the amount of healing absorbed. The damage absorbed cannot be greater than 100% of the player\'s maximum health.' },
+          ]},
+          { important: true, dodge: true, name: 'Essence of Y\'Shaarj', desc: 'The Ancient Miasma forms 2 orbs of corruption every 3 seconds that persist for the remainder of the fight. If a player comes into contact with an orb, it is consumed, removing Ancient Barrier and inflicting 150,000 Shadow damage to them.' },
+          { important: true, dodge: true, name: 'Arcing Smash', desc: 'Malkorok faces a random player and unleashes a devastating overhead attack, inflicting 810,000 Physical damage to all players within a cone in front of him.' },
+          { important: true, name: 'Breath of Y\'Shaarj', desc: 'Malkorok channels the power of Y\'Shaarj, causing the areas recently hit by Arcing Smash to explode, inflicting 1,620,000 Shadow damage.' },
+          { important: true, name: 'Imploding Energy', desc: 'Malkorok\'s corruption opens 3 tears of dark energy that inflict 585,000 Shadow damage to all players within 5 yards after 4 sec. If the implosion does not hit a player, it instead inflicts 688,500 Shadow damage to all players.' },
+          { name: 'Seismic Slam', desc: 'Malkorok slams the ground, inflicting 675,000 Physical damage in a radius around a random player, knocking all injured targets into the air.', children: [
+            { name: 'Living Corruption', desc: 'Seismic Slam causes Living Corruption to ooze out of the ground and attack players, reducing movement speed and spell casting speed of players within 8 yards by 75%.' },
+          ]},
+          { role: 'tank', name: 'Fatal Strike', desc: 'Malkorok\'s melee attacks fatally wound his target, increasing their damage taken by 10% for 30 sec.' },
+          { important: true, name: 'Eradicate', desc: 'Malkorok kills all players if he is not defeated within 6 minutes.' },
         ],
       },
       {
-        phase: 'Phase 2',
+        phase: 'Phase 2 — Blood Rage',
         items: [
-          { name: 'Blood Rage', important: true, desc: 'At 100 Rage, channels a 6.7M Physical cleave split among all players in front. Stack the entire raid and use a major raid cooldown. Lasts ~20 seconds.' },
-          { name: 'Displaced Energy', desc: 'Detonates and on Heroic roots its targets in place. Dispel immediately once the stack is formed — do not wait for them to run out.' },
+          { name: 'Endless Rage', desc: 'Malkorok gains Rage over time whenever he is not in a Blood Rage. When Malkorok reaches 100 Rage, he absorbs the Ancient Miasma and enters a Blood Rage.' },
+          { important: true, role: 'tank', name: 'Blood Rage', desc: 'When Malkorok reaches 100 Rage, he enters a Blood Rage, causing each melee attack to inflict 2,430,000 Physical damage, split among all enemies hit. Blood Rage causes Malkorok to lose 5 Rage every second and ends when he no longer has any Rage. When Blood Rage expires, Malkorok expels the Ancient Miasma from his body.' },
+          { important: true, name: 'Displaced Energy', desc: 'While in a Blood Rage, energy arcs off of Malkorok\'s body, afflicting players with Displaced Energy. This effect inflicts 337,500 Shadow damage every 3 sec for 9 sec. When Displaced Energy expires, the energy explodes outward, inflicting 607,500 Shadow damage to all allies within 8 yards. In Heroic Difficulty, Displaced Energy roots the target in place.' },
+          { name: 'Relentless Assault', desc: 'When Blood Rage expires, Malkorok gains Relentless Assault, increasing all damage done by 25%. This effect stacks.' },
         ],
       },
     ],
@@ -881,12 +1049,35 @@ export const BOSSES: Boss[] = [
     ],
     abilities: [
       {
-        phase: 'Both Sides',
+        phase: 'Mogu Crates',
         items: [
-          { name: 'Unstable Spark (Heroic)', important: true, desc: 'Every crate cleared sends one Spark to the other side. ~1M HP, casts 10-second Supernova. Kill on sight. Pull boss crates to center for passive cleave.' },
-          { name: 'Amber Encasement / Matter Scramble (Mogu)', important: true, desc: 'Anima Golems spawn two ground markers. One player per marker — if either is empty it explodes for ~300k to all.' },
-          { name: 'Stone Statues (Mogu Boss)', important: true, desc: 'Each active statue increases boss AoE by 20%. Kill as they spawn — never let more than 2 be active.' },
-          { name: 'Set to Blow (Mantid Boss)', desc: 'Debuff with 4 stacks — each explodes for ~200k at expiry. Use Extra Action Button to drop bombs in empty corners.' },
+          { important: true, name: 'Shao-Tien Elder Council — Return to Stone', desc: 'Drains life from players, knocking them back and inflicting 98,718–103,781 Shadow damage, forming a stone statue from that essence. Statues frequently strike the ground, inflicting 197,437–207,562 Physical damage and stunning targets in a frontal cone for 4 sec. Each active statue increases the boss\'s damage by 20% and an additional 20% per statue alive.' },
+          { important: true, name: 'Modified Anima Golem — Matter Scramble', desc: 'Highlights several locations on the ground which will scramble the locations of players standing inside them. If the Golem attempts to scramble a location with no players, the fabric of space tears, inflicting 487,500–512,500 Fire damage to players within 90 yards.', children: [
+            { name: 'Crimson Reconstitution', desc: 'Creates voids of magic around nearby units. Any enemies which remain in the void are healed for 15% of their maximum health every second.' },
+          ]},
+          { name: 'Mogu Shadow Ritualist — Torment', desc: 'Torments a target with the pain wrought from a thousand years of isolation, inflicting 149,250–150,750 Shadow damage immediately and additional Shadow damage every second until dispelled. Each time Torment is dispelled, it jumps to a nearby target, inflicts the initial damage, and resets the damage increase.' },
+        ],
+      },
+      {
+        phase: 'Mantid Crates',
+        items: [
+          { important: true, name: 'Mantid Commanders — Set to Blow', desc: 'Throws a pack of highly volatile bombs on the back of players. After 15 sec, these bombs will detonate, inflicting 400,000 Fire damage per remaining stack to all players within 9 yards. Players may use Throw Bomb to remove one of these bombs, dropping it on the ground at their feet instead.' },
+          { important: true, name: 'Set\'thik Wind Wielder — Windstorm', desc: 'Creates a torrent of wind that moves around in a spiral. Colliding with the torrent inflicts 337,500 Nature damage. Rage of the Empress rallies nearby friendly targets, increasing all damage dealt by 50%.' },
+          { name: 'Zar\'thik Amber Priest — Residue', desc: 'Applies a thick layer of restorative amber residue to nearby friendly targets, healing them for 300,000 health every 3 sec divided evenly amongst all targets. Mantid Swarm rallies additional Zar\'thik Mantid to his aid.' },
+        ],
+      },
+      {
+        phase: 'Pandaren Relics',
+        items: [
+          { name: 'Ancient Brewmaster Spirit', desc: 'Keg Toss hurls a keg at a distant target, inflicting 192,375–212,625 Nature damage and slowing by 50% for 15 sec. Breath of Fire bellows a channel of fire inflicting 320,625–354,375 Fire damage for 6 sec.' },
+          { name: 'Wise Mistweaver Spirit', desc: 'Eminence: when the Monk deals damage, she heals for 200% of the damage dealt. Gusting Crane Kick spins rapidly, drawing in players within 40 yards and inflicting 157,950–166,050 Physical damage every second for 4 sec.' },
+          { name: 'Nameless Windwalker Spirit', desc: 'Path of Blossoms charges a distant target, leaving behind a trail of fiery blossoms which inflict 230,343–242,156 Fire damage on contact. Upon reaching the target\'s location, casts Mass Paralysis, stunning remaining targets within 3 yards for 6 sec.' },
+        ],
+      },
+      {
+        phase: 'Heroic',
+        items: [
+          { important: true, name: 'Unstable Spark', desc: 'In a last ditch effort, any being animated by the Unstable Titan Energy transforms into a raw Unstable Spark, leaps to a distant quadrant and attempts to go Supernova. Successfully casting Supernova inflicts 544,500–555,500 Nature damage to all nearby enemies.' },
         ],
       },
     ],
@@ -969,12 +1160,42 @@ export const BOSSES: Boss[] = [
     ],
     abilities: [
       {
-        phase: 'Core Loop',
+        phase: 'Stage 1 — Tanked Phase',
         items: [
-          { name: 'Deafening Screech', important: true, desc: 'Stacks every second. At ~27–28 stacks on Heroic you must force Phase 2. Hard enrage at 30. A pre-planned CD rotation is mandatory — raw throughput is not enough.' },
-          { name: 'Prisoner Release', important: true, desc: 'Resets stacks but adds an environmental hazard and gives Thok a Frenzy stack. Recommended order: Acid → Frost → Fire. Fire last because Burning Blood prevents stacking.' },
-          { name: 'Blood Frenzy (Phase 2 trigger)', desc: '5+ players below 50% HP within 10 yards triggers Phase 2. Never trigger it accidentally.' },
-          { name: 'Frenzy (accumulated)', desc: 'At high Frenzy stacks from multiple prisoner releases, Thok takes massively increased damage. This is your kill window — Bloodlust and burn.' },
+          { role: 'tank', dodge: true, name: 'Fearsome Roar', desc: 'Thok\'s bellowing roar inflicts 268,125–281,875 Physical damage in a frontal cone. The roar incites terror in players\' hearts, causing them to take 25% more damage per stack.' },
+          { important: true, name: 'Deafening Screech', desc: 'Upon reaching full energy, Thok lets loose a shrill cry, inflicting 399,750–420,250 Physical damage to all enemies and interrupting spellcasts. Every time Thok Screeches, the rate of his energy regeneration is increased.' },
+          { dodge: true, role: 'tank', name: 'Tail Lash', desc: 'Thok\'s mighty tail whips about, striking all enemies behind the caster, inflicting 292,500–307,500 Physical damage and stunning them for 2 sec.' },
+          { name: 'Shock Blast', desc: 'Electricity arcs and snaps around Thok\'s shock collar, inflicting 170,625–179,375 Nature damage to random enemies.' },
+          { important: true, name: 'Bloodied', desc: 'When players fall beneath 50% health, Thok the Bloodthirsty can smell their blood. If 5 or more players who are Bloodied are within 10 yards of one another, the scent of blood becomes overwhelming and Thok enters a frenzy for blood.' },
+        ],
+      },
+      {
+        phase: 'Stage 2 — Blood Frenzy',
+        items: [
+          { important: true, name: 'Blood Frenzy', desc: 'Thok roars in hunger, knocking away front enemies and going into a frenzy for blood. Any enemies who are caught within reach of Thok\'s terrible maw are devoured instantly. Thok gradually gains speed during Blood Frenzy. He is immune to taunt during Blood Frenzy.' },
+          { dodge: true, name: 'Fixate', desc: 'Thok becomes unable to be tanked, and will fixate on random distant players.' },
+          { name: 'Kor\'kron Jailer', desc: 'Thok\'s mighty roar when he enters a Blood Frenzy attracts the attention of a nearby jailer. Upon defeating him, you may obtain a prison key that can unlock one of the nearby cells.' },
+        ],
+      },
+      {
+        phase: 'Acid Phase — Akolik',
+        items: [
+          { role: 'tank', dodge: true, name: 'Acid Breath', desc: 'Thok\'s Fearsome Roar is replaced by Acid Breath, inflicting 633,750–666,250 Nature damage in a frontal cone. The acid coats the armor of affected players, reducing its effectiveness by 20% per stack.' },
+          { dodge: true, name: 'Corrosive Blood', desc: 'A corrosive poison seeps from every one of Thok\'s pores, hitting random players for 195,000–205,000 Nature damage initially and then 50,000 Nature damage every 1 sec for 30 sec.' },
+        ],
+      },
+      {
+        phase: 'Frost Phase — Gorai',
+        items: [
+          { role: 'tank', dodge: true, name: 'Freezing Breath', desc: 'Thok\'s Fearsome Roar is replaced by Freezing Breath, inflicting 268,125–281,875 Frost damage in a frontal cone and coating players in frost. After 5 stacks, the target will be frozen in a tomb of ice.' },
+          { dodge: true, name: 'Icy Blood', desc: 'Thok\'s skin freezes and cracks, spurting plumes of ice. Inflicts 175,500–184,500 Frost damage to random enemies and coats enemies in ice for 15 sec, inflicting 58,500–61,500 damage every 1 second. Upon reaching 5 stacks, a player becomes frozen in a tomb of ice.' },
+        ],
+      },
+      {
+        phase: 'Fire Phase — Montak',
+        items: [
+          { role: 'tank', dodge: true, name: 'Scorching Breath', desc: 'Thok\'s Fearsome Roar is replaced by Scorching Breath, inflicting 268,125–281,875 Fire damage in a frontal cone. The flames sear enemy flesh, causing 82,000 Fire damage every 2 seconds.' },
+          { dodge: true, name: 'Burning Blood', desc: 'Thok\'s skin becomes coated in a sheen of incendiary oil, inflicting 107,250–112,750 Fire damage to random enemies and leaving a puddle of flame beneath their feet.' },
         ],
       },
     ],
@@ -1059,19 +1280,32 @@ export const BOSSES: Boss[] = [
     ],
     abilities: [
       {
-        phase: 'Assembly Line',
+        phase: 'Siegecrafter Blackfuse',
         items: [
-          { name: 'Pattern Recognition', desc: '1-minute debuff applied when using a pipe to reach the belt. Cannot re-enter until it expires. Rotate two groups of 2 DPS. Hunter Disengage bypasses this entirely.' },
-          { name: 'Overcharged Weapon', important: true, desc: 'Each weapon that reaches Blackfuse gives +15% damage/haste. Sawblade: rolling raid damage. Shredder: spawns an add. Electromagnet: pulls all players.' },
-          { name: 'Heroic Sabotage Mechanics', important: true, desc: 'Each weapon type requires a different interaction on Heroic. Assign and practice the belt team\'s rotation before the pull.' },
+          { name: 'Launch Sawblade', desc: 'Siegecrafter Blackfuse launches a magnetized sawblade at a random player. The sawblade will hover in place until it is removed by an Activated Electromagnet.', children: [
+            { name: 'Serrated Slash', desc: 'Sawblades inflict 601,250–698,750 Physical damage to any players or Automated Shredders with which they come into contact, knocking back any affected players.' },
+          ]},
+          { role: 'tank', important: true, name: 'Electrostatic Charge', desc: 'Siegecrafter Blackfuse charges his target with static electricity, inflicting 375,000 Nature damage. Electrostatic Charge leaves a lingering effect increasing the damage taken from Electrostatic Charge and greatly increasing damage dealt to targets with Reactive Armor. This effect stacks up to 10 times.' },
+          { name: 'Protective Frenzy', desc: 'When one of his creations is destroyed, Siegecrafter Blackfuse enters a frenzy, increasing his attack speed by 100% for 10 sec.' },
+          { name: 'Automatic Repair Beam', desc: 'Siegecrafter Blackfuse\'s suit is fitted with an Automatic Repair Beam, which will detect any damaged Automated Shredders within 35 yards, and heal them for 5% of their maximum health every 3 sec.' },
+          { important: true, name: 'Overcharge / Energized Defensive Matrix', desc: 'When activated weapons arrive on the assembly line, Siegecrafter Blackfuse will Overcharge one of them. If three weapons make it through the Assembly Line, the machine will become overcharged and power the defensive systems on Blackfuse\'s suit, granting him 90% reduced damage for 20 sec.' },
         ],
       },
       {
-        phase: 'Ground Mechanics',
+        phase: 'Ground Weapons',
         items: [
-          { name: 'Electrostatic Charge', important: true, desc: '3-4-3-4 swap pattern. Debuffed tank picks up and burns the Shredder using stack bonus damage. Use defensives at stack 3 and 4.' },
-          { name: 'Crawler Mines (Ground)', important: true, desc: 'Fixate on a random non-tank player. Stunnable for the first minute. #1 kill priority — if one reaches its target, massive raid-wide damage and knockup.' },
-          { name: 'Overcharged Mines (Wave 6)', important: true, desc: '3 large mines each split into 2 smalls on death. CC-chain and nuke. The highest-damage event in the fight.' },
+          { important: true, name: 'Crawler Mines', desc: 'Assembled Crawler Mines leap down from the conveyor belt, fixating on a random player. When a Crawler Mine reaches its target it will self-destruct, inflicting 277,500–322,500 Fire damage to players within range. Break-in Period: mines are vulnerable to roots, snares and stuns for 1 min after joining the battle. Overcharged Crawler Mines create two new Crawler Mines when destroyed.' },
+          { dodge: true, name: 'Laser Turret — Superheated', desc: 'The ground hit by a Laser Turret\'s beam burns players who step on it, inflicting 50,000 Fire damage each second for 7 sec, stacking every second up to 20 times. Overcharged Laser Turret fires a split beam, creating three concentric arcs of Superheated ground.' },
+          { dodge: true, name: 'Shockwave Missile', desc: 'The Shockwave Missile turret launches a drill-tipped missile into the ground, sending a barrage of drills that ripple out and create rings of seismic energy. Each ring inflicts 531,875–618,125 Nature damage to players caught within it. Overcharged version persists until destroyed by players.' },
+          { name: 'Electromagnet — Magnetic Crush', desc: 'When activated, the electromagnet magnetically crushes all players on the platform, inflicting 50,000 Physical damage each second and pulling them toward it. The force also pulls all sawblades toward it. Overcharged Electromagnet periodically reverses polarities, pushing both players and sawblades in and out.' },
+        ],
+      },
+      {
+        phase: 'Automated Shredders',
+        items: [
+          { important: true, name: 'Reactive Armor', desc: 'Automated Shredders have been retrofitted with Reactive Armor, reducing damage taken by 90%. Automated Shredders can also be damaged by Serrated Slash, Shockwave Missile, Detonate! and Superheated.' },
+          { dodge: true, name: 'Death from Above', desc: 'The Automated Shredder propels itself into the air and slams back into the ground, dealing 693,750–806,250 damage to players within 15 yards. After landing, the Shredder is stunned and takes 200% additional damage for 5 sec.' },
+          { important: true, name: 'Overload', desc: 'The Automated Shredder periodically casts Overload, dealing 220,000 damage to raid members not currently on the conveyor belt and increasing its damage dealt by 30%.' },
         ],
       },
     ],
@@ -1174,13 +1408,82 @@ export const BOSSES: Boss[] = [
     ],
     abilities: [
       {
-        phase: 'Key Abilities',
+        phase: 'Shared Mechanics',
         items: [
-          { name: 'Paragon Empowerment', important: true, desc: 'Each killed Paragon empowers all remaining ones with a stacking 8% damage increase. The kill order matters — follow it precisely.' },
-          { name: 'Rik\'kal — Parasitic Injection (Heroic)', important: true, desc: 'Allow the first Injection to create parasite stockpile. Block all subsequent ones. Scorpion players must eat a parasite via Prey. CC parasites — do not kill them until all scorpions have eaten.' },
-          { name: 'Korven — Encase in Amber (Heroic)', important: true, desc: 'Unbreakable without Ka\'roz\'s buff. Bait onto Ka\'roz at 50%, then burn Korven in the 30-second window.' },
-          { name: 'Kil\'ruk — Reave', important: true, desc: 'Pulls the entire raid and prevents all DPS while active. Kill him as soon as he activates.' },
-          { name: 'Iyyokuk — Fiery Edge', important: true, desc: 'Hits 8 of 10 players on Heroic. Spread at max range. Use a raid cooldown on every cast once he has stacks.' },
+          { important: true, name: 'Paragon\'s Purpose', desc: 'Whenever a Klaxxi Paragon is defeated, all other active Klaxxi Paragons heal to full. All active Paragons gain a stacking 8% damage bonus every 50 seconds.' },
+          { name: 'Power of the Paragons', desc: 'After a Paragon has been defeated, one player may take the fallen Paragon\'s powers to use as their own. Only one player can take any one Paragon\'s power, and a player may only take a Paragon\'s power once during the encounter.' },
+        ],
+      },
+      {
+        phase: 'Skeer the Bloodseeker',
+        items: [
+          { name: 'Bloodletting', desc: 'Skeer swings his weapon in a mighty arc, inflicting Physical damage to the target and causing blood creatures to spawn around the room. Each blood moves to a Paragon and will heal that Paragon based on the remaining health of the blood. In 10 Player Heroic Difficulty 3 bloods are summoned.' },
+          { name: 'Hewn', desc: 'The attacks of Skeer the Bloodseeker leave the victim more susceptible to Rik\'kal the Dissector\'s attacks. The victim suffers 10% more damage per application from Rik\'kal the Dissector.' },
+        ],
+      },
+      {
+        phase: 'Rik\'kal the Dissector',
+        items: [
+          { important: true, name: 'Injection', desc: 'Rik\'kal Injects his victim with a virus that inflicts 52,000 Nature damage per second per application. When the virus expires, several Parasites will burst from the victim and attack players at random. Injection will not hit tanks that are actively trying to mitigate damage.', children: [
+            { name: 'Amber Parasite', desc: 'Amber Parasites are Genetically Modified and fixate on a random player when they spawn. Feed inflicts 105,300–110,700 Physical damage each second.' },
+          ]},
+          { important: true, name: 'Mutate: Amber Scorpion', desc: 'Rik\'kal tosses a vial at a random player, causing them to mutate into an Amber Scorpion. While transformed, the victim suffers 67,500 Nature damage per second and only has access to Amber Scorpion abilities. In Heroic, mutated victims must use Prey on an Amber Parasite before Faulty Mutation expires or they perish.' },
+        ],
+      },
+      {
+        phase: 'Hisek the Swarmkeeper',
+        items: [
+          { dodge: true, name: 'Rapid Fire', desc: 'Hisek fires several volleys in rapid succession, with each successive volley moving slightly faster. Players caught in the path of the volleys suffer 384,750–425,250 Physical damage each second they are in the volley.' },
+          { important: true, name: 'Aim', desc: 'Hisek selects a player at random and stuns them for 5 sec, then fires a beam of 1,890,000 Physical damage at all targets between him and the victim. Damage is shared between all targets equally. Each target hit creates a field of Sonic Resonance at their location.' },
+        ],
+      },
+      {
+        phase: 'Ka\'roz the Locust',
+        items: [
+          { dodge: true, name: 'Flash', desc: 'Ka\'roz charges around the raid toward random targets. All players caught in his path are afflicted by Whirling.', children: [
+            { name: 'Whirling', desc: 'Players caught in Ka\'roz\'s path spin around and suffer 300,000 Physical damage per second. Any other players caught in the vicinity of a Whirling victim also suffer this damage.' },
+          ]},
+          { dodge: true, name: 'Hurl Amber', desc: 'Ka\'roz jumps to one of the platforms and hurls Amber down at enemies. Wherever the amber lands, a pool of Caustic Amber forms. Players that enter a pool suffer 185,000–215,000 Nature damage every second. In Heroic Difficulty Ka\'roz hurls four pieces of amber and the pool persists for the duration of the encounter.' },
+        ],
+      },
+      {
+        phase: 'Korven the Prime',
+        items: [
+          { important: true, name: 'Encase in Amber', desc: 'If Korven the Prime or any other active Paragon is below 50% health remaining, Korven will Encase them in Amber for 10 sec. If the amber is not defeated within 10 sec the target will be restored to full health. In Heroic Difficulties the Amber summoned by this ability is immune to all player abilities.' },
+          { role: 'tank', name: 'Shield Bash', desc: 'Korven the Prime slams his shield into his primary tank target, knocking them down and stunning them for 6 sec. The victim is defenseless for the duration. Immediately after, Korven unleashes a Vicious Assault.', children: [
+            { name: 'Vicious Assault', desc: 'Korven the Prime follows up his Shield Bash with 6 different strikes at all targets in front of him. The first strike causes the victim to suffer 270,000 Physical damage every 3 seconds. Each successive strike inflicts greater and greater Physical damage.' },
+          ]},
+        ],
+      },
+      {
+        phase: 'Iyyokuk the Lucid',
+        items: [
+          { important: true, name: 'Insane Calculation: Fiery Edge', desc: 'Iyyokuk peers through the veil of his previous calculations and selects an initial target, then all other targets based on the initial target\'s criteria to spawn lines of fire between them. In 10 Player Heroic Difficulty, Iyyokuk selects all targets that match any of two of the initial target\'s three criteria. Each target creates a line of fire between themselves and two other targets.' },
+          { name: 'Diminish', desc: 'Iyyokuk uses his command of the arcane to alter the victim\'s health by 34% of its current value. If the target is below 25% of their maximum health they will die instantly.' },
+        ],
+      },
+      {
+        phase: 'Xaril the Poisoned Mind',
+        items: [
+          { name: 'Toxic Injection', desc: 'When Xaril joins the encounter, he randomly injects all players with one of three different toxins: red, blue, or yellow.' },
+          { role: 'tank', important: true, name: 'Caustic Blood', desc: 'Successful melee strikes from Xaril inject a caustic poison inflicting 67,500 Nature damage per application every second for 12 sec. If the injection stacks to 10, a Bloody Explosion occurs, inflicting 600,000 Fire Damage to the entire raid. Caustic Blood will fail to hit tanks who are using their Active Mitigation abilities.' },
+          { important: true, name: 'Choose Catalyst', desc: 'Xaril selects a catalyst at random and strikes all raid members with a toxin that matches the color of the catalyst, causing all targets\' toxins to react. Orange: ring of fire (avoid allies\' rings). Purple: victims run forward leaving Canned Heat trails (121,875–128,125 Fire damage). Green: Eerie Fog cloud wanders randomly (121,875–128,125 Nature damage, shrinks each time entered).' },
+        ],
+      },
+      {
+        phase: 'Kaz\'tik the Manipulator',
+        items: [
+          { important: true, name: 'Mesmerize', desc: 'Kaz\'tik selects a random raid member and forces them to walk toward one of his Hungry Kunchongs. If the victim reaches the Kunchong they will be Devoured Whole.' },
+          { important: true, name: 'Hungry Kunchong', desc: 'When Kaz\'tik Mesmerizes a player, a Hungry Kunchong is selected to feed on the victim. Feed inflicts 135,000 Physical damage per second. If the Kunchong suffers 30% of its total health in damage from when it began to Feed, the Feeding stops. Thick Shell: when not Feeding, the Kunchong is immune to all damage. At full energy a Kunchong Molts into a Mature Kunchong.' },
+          { name: 'Sonic Projection', desc: 'Kaz\'tik fires a sonic wave at a random raid member. Players caught in the path suffer 468,281–544,218 Physical damage.' },
+        ],
+      },
+      {
+        phase: 'Kil\'ruk the Wind-Reaver',
+        items: [
+          { role: 'tank', name: 'Gouge / Mutilate', desc: 'Kil\'ruk the Wind-Reaver incapacitates his current tank target. This attack is followed immediately by Mutilate, lashing out with both weapons for a devastating attack.' },
+          { dodge: true, name: 'Death from Above', desc: 'Kil\'ruk the Wind-Reaver leaps into the air over a random player and then crashes down, inflicting Physical damage to all enemies within 8 yards upon landing.' },
+          { important: true, name: 'Reave', desc: 'Kil\'ruk leaps to a random player and begins to spin in place. All players are drawn toward Kil\'ruk and suffer Physical damage for 9 sec. The damage each player suffers during Reave is decreased as the player gets away from Kil\'ruk.' },
         ],
       },
     ],
@@ -1266,32 +1569,40 @@ export const BOSSES: Boss[] = [
     ],
     abilities: [
       {
-        phase: 'Phase 1',
+        phase: 'Stage One — The True Horde',
         items: [
-          { name: 'Desecrate', desc: 'Thrown at a ranged target. 3 players always at range to bait it. Place weapons along walls. In Phase 2+ weapons are unkillable.' },
-          { name: 'Siege Engineer', important: true, desc: 'Spawns on balcony. 10-second window to kill before Iron Star activates uncontrolled. Heroic: 3M HP — send highest burst DPS solo for the first.' },
+          { name: 'Desecrate', desc: 'Garrosh hurls the Desecrated Weapon at a random enemy, inflicting 195,000–205,000 Shadow damage to enemies within 15 yards and creates a Desecrated Weapon at the location. The power of Y\'Shaarj seeps from the weapon; as its health gets lower, the radius of the Desecrated ground becomes smaller.' },
+          { important: true, name: 'Hellscream\'s Warsong', desc: 'Hellscream\'s Warsong inspires his allies, increasing Physical damage dealt by 150% and increasing health by 150%.' },
+          { important: true, name: 'Siege Engineer / Kor\'kron Iron Star', desc: 'Siege Engineers enter from the side balcony and begin to power the Iron Star, which becomes active after 10 sec if the Engineer is not killed. Once activated, the Iron Star rolls across the room, slamming into the opposite wall. Iron Star Impact inflicts massive damage to any players or Kor\'kron in its path. Exploding Iron Star inflicts up to 3,412,501–3,587,501 Fire damage to nearby enemies.' },
         ],
       },
       {
-        phase: 'Phase 2 / 3',
+        phase: 'Intermission — Realm of Y\'Shaarj',
         items: [
-          { name: 'Whirling Corruption', important: true, desc: 'Stack for base version. Empowered: spread to 40 yards — missiles spawn Minion adds at landing positions. Kill each minion separately — never let two die adjacent.' },
-          { name: 'Touch of Y\'Shaarj', important: true, desc: 'MC on 2 players who spread the MC on cast. Interrupt or stun every cast. DPS to 20% HP to break. No DoTs that can kill the player.' },
-          { name: 'Gripping Despair → Explosive Despair (P3)', important: true, desc: 'Stacking tank DoT. Swap at 3. In Phase 3 dropping stacks triggers Explosive Despair — use a tank defensive every time stacks fall.' },
+          { important: true, name: 'Y\'Shaarj\'s Protection', desc: 'Garrosh is immune to damage. Defeating the Sha minions will dispel the protection. While under the protection of Y\'Shaarj, Garrosh will absorb energy from the Heart. After Absorb Power is interrupted, Garrosh casts Annihilate, inflicting 682,500–717,500 Shadow damage to all enemies in the Realm of Y\'Shaarj.' },
+          { important: true, name: 'Embodied Doubt (Jade Temple)', desc: 'Any Embodied Doubt in the Temple of the Jade Serpent will cast Embodied Doubt, inflicting Shadow damage to all enemies within the realm of Y\'Shaarj and increasing damage taken by Embodied Doubt by 75%. Stacks.' },
+          { name: 'Embodied Fear (Terrace)', desc: 'Found in the Terrace of Endless Spring. Crushing Fear inflicts 390,000–410,000 Shadow damage and inflicts fear on enemies within 8 yards for 3 sec. Once all Embodied Fear are defeated Y\'Shaarj\'s Protection will fade from Garrosh.' },
+          { name: 'Embodied Despair (Red Crane)', desc: 'Found in the Temple of the Red Crane. Death of an Embodied Despair causes the other to cast Ultimate Despair, inflicting 97,500–102,500 Shadow damage and increasing damage taken by 30%. Stacks.' },
         ],
       },
       {
-        phase: 'Intermission',
+        phase: 'Stage Two — Power of Y\'Shaarj',
         items: [
-          { name: 'Embodied Doubt (Jade Temple)', important: true, desc: 'AoE silence + stacking damage amplifier. Pre-assign interrupt/stun pairs. Kill all 15 adds before Garrosh hits 25 energy.' },
+          { important: true, name: 'Whirling Corruption', desc: 'Garrosh begins whirling, inflicting 155,999–164,000 Shadow damage to nearby enemies. When Garrosh reaches 25 Energy, Whirling Corruption becomes Empowered — periodically firing a missile at a player inflicting 438,750–461,250 Shadow damage to enemies within 8 yards and creating a Minion of Y\'Shaarj at the location.', children: [
+            { name: 'Minion of Y\'Shaarj', desc: 'A minion of Y\'Shaarj will cast Empowering Corruption when it is killed, healing nearby Minions to full and increasing max health by 200% and damage dealt by 500%. Stacks. In Heroic, each Minion gains 10 energy per melee hit; at 100 energy it casts Empowering Corruption.' },
+          ]},
+          { important: true, name: 'Touch of Y\'Shaarj', desc: 'Garrosh afflicts players with Touch of Y\'Shaarj. Touched players will try to spread the Touch of Y\'Shaarj. Touch of Y\'Shaarj is removed when the player is reduced to 20% of max health. When Garrosh reaches 50 Energy, Touch of Y\'Shaarj becomes Empowered, transforming players into a Sha that is immune to loss of control effects.' },
+          { name: 'Desecrate', desc: 'Garrosh hurls the Desecrated Weapon at a random enemy. When Garrosh reaches 75 Energy, Desecrate becomes Empowered — creating an Empowered Desecrated Weapon that gains Power of Y\'Shaarj, causing it to become indestructible and regain health over time.' },
+          { role: 'tank', important: true, name: 'Gripping Despair', desc: 'Gripping Despair inflicts 45,000 Shadow damage every 1 sec for 10 sec. This effect stacks. When Garrosh reaches 100 Energy, Gripping Despair becomes Empowered — when it expires or is removed it causes Explosive Despair, inflicting Shadow damage equal to the value of Gripping Despair and increasing damage taken by Explosive Despair by 30% per stack.' },
         ],
       },
       {
-        phase: 'Phase 4 (Heroic Only)',
+        phase: 'Stage Three — MY WORLD',
         items: [
-          { name: 'Malice', important: true, desc: 'Raid stacks at circle edge. Step outside on Malicious Blast debuff, return after 4 seconds. If fewer than 2 inside, Garrosh gains energy.' },
-          { name: 'Manifest Rage', important: true, desc: 'Cast at 100 energy. Iron Star must interrupt during the 2-second cast window. Each second of channel spawns more adds.' },
-          { name: 'Iron Star (Phase 4)', important: true, desc: 'Spawned by Bombardment clump check. Off-tank kites along wall to intercept Garrosh at exactly 100 energy.' },
+          { important: true, name: 'Empowered Whirling Corruption', desc: 'Periodically fires a missile at a player, inflicting 438,750–461,250 Shadow damage to enemies within 8 yards and creating a Minion of Y\'Shaarj at the location.' },
+          { important: true, name: 'Empowered Touch of Y\'Shaarj', desc: 'Garrosh afflicts players with Empowered Touch of Y\'Shaarj, transforming them into a Sha that is immune to loss of control effects and has increased health. Touch of Y\'Shaarj is removed when the player is reduced to 20% of max health.' },
+          { important: true, name: 'Empowered Desecrate', desc: 'Garrosh creates an Empowered Desecrated Weapon that gains Power of Y\'Shaarj, becoming indestructible and regaining health over time.' },
+          { important: true, name: 'Empowered Gripping Despair', desc: 'Inflicts 45,000 Shadow damage every 1 sec for 10 sec. When Empowered Gripping Despair expires or is removed it causes Explosive Despair, inflicting Shadow damage and increasing damage taken by Explosive Despair by 30% for each stack when it expired or was removed.' },
         ],
       },
     ],
