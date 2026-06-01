@@ -20,6 +20,27 @@ const MODEL_CONFIG: Record<string, {
   'waterelementalbosscorrupted.glb': {
     baseY: -1.8, scale: 1.35, posY: -2.4, camZ: 5, camY: 1.5, fov: 34,
   },
+  'shaboss.glb': {
+    baseY: -1.8, scale: 0.25, posY: -3.4, camZ: 5, camY: 1.5, fov: 40,
+  },
+  'shaboss_pride.glb': {
+    baseY: -1.8, scale: 0.4, posY: -4.4, camZ: 5, camY: 1.5, fov: 100,
+  },
+  'korkronprotodrake_protodragon_northrendred.glb': {
+    baseY: -2.0, scale: 0.5, posY: -3.0, camZ: 8, camY: 1.5, fov: 60,
+  },
+  'ironjuggernaut_dungeondoll.glb': {
+    baseY: -1.8, scale: 1.35, posY: -1.4, camZ: 5, camY: 1.5, fov: 34,
+  },
+  'orcsupersoldier.glb': {
+    baseY: -1.8, scale: 1.35, posY: -2.4, camZ: 8, camY: 1.5, fov: 34,
+  },
+  'hordearmoredtrex_01dark.glb': {
+    baseY: -2.0, scale: 0.6, posY: -3.0, camZ: 8, camY: 1.5, fov: 34,
+  },
+  'siegeengineer_doll_blackfuseskin.glb': {
+    baseY: -1.8, scale: 0.9, posY: -2.4, camZ: 8, camY: 1.5, fov: 40,
+  },
 }
 
 const DEFAULT_CONFIG = {

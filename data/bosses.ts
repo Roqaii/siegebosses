@@ -144,6 +144,7 @@ export const BOSSES: Boss[] = [
   {
     num: 3,
     slug: 'norushen',
+    modelFile: 'shaboss.glb',
     name: 'NORUSHEN',
     sub: 'Amalgam of Corruption',
     zone: 1, zc: 'z1',
@@ -204,6 +205,7 @@ export const BOSSES: Boss[] = [
   {
     num: 4,
     slug: 'sha-of-pride',
+    modelFile: 'shaboss_pride.glb',
     name: 'SHA OF PRIDE',
     sub: 'Pride Bar Management · Heroic: Rifts + Banishment',
     zone: 1, zc: 'z1',
@@ -272,6 +274,7 @@ export const BOSSES: Boss[] = [
   {
     num: 5,
     slug: 'galakras',
+    modelFile: 'korkronprotodrake_protodragon_northrendred.glb',
     name: 'GALAKRAS',
     sub: 'Tower + Ground Split Fight',
     zone: 2, zc: 'z2',
@@ -330,6 +333,7 @@ export const BOSSES: Boss[] = [
   {
     num: 6,
     slug: 'iron-juggernaut',
+    modelFile: 'ironjuggernaut_dungeondoll.glb',
     name: 'IRON JUGGERNAUT',
     sub: 'Assault and Siege Phases Alternate',
     zone: 2, zc: 'z2',
@@ -532,6 +536,7 @@ export const BOSSES: Boss[] = [
   {
     num: 9,
     slug: 'malkorok',
+    modelFile: 'orcsupersoldier.glb',
     name: 'MALKOROK',
     sub: 'Ancient Miasma · Orbs · Blood Rage',
     zone: 3, zc: 'z3',
@@ -642,6 +647,7 @@ export const BOSSES: Boss[] = [
   {
     num: 11,
     slug: 'thok',
+    modelFile: 'hordearmoredtrex_01dark.glb',
     name: 'THOK THE BLOODTHIRSTY',
     sub: 'Healing CD Rotation · Kiting · Cage Management',
     zone: 3, zc: 'z3',
@@ -688,6 +694,7 @@ export const BOSSES: Boss[] = [
   {
     num: 12,
     slug: 'siegecrafter-blackfuse',
+    modelFile: 'siegeengineer_doll_blackfuseskin.glb',
     name: 'SIEGECRAFTER BLACKFUSE',
     sub: 'Assembly Line + Overcharged Weapons',
     zone: 4, zc: 'z4',
