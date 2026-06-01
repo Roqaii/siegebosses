@@ -324,44 +324,108 @@ function PhaseSection({ boss }: { boss: Boss }) {
 }
 
 /* ─── ABILITIES ──────────────────────────────── */
-function AbilityItem({ ability }: { ability: AbilityItem }) {
-  const tagColor = ability.dodge
-    ? { bg: 'rgba(110,240,160,0.08)', border: 'rgba(110,240,160,0.2)', text: '#6ef0a0', label: 'DODGE' }
+
+/* SVG tag icons */
+function TagDodge() {
+  return (
+    <span title="Dodge / avoid" style={{ display:'inline-flex', alignItems:'center', justifyContent:'center', width:20, height:20, borderRadius:3, background:'rgba(110,240,160,0.10)', border:'1px solid rgba(110,240,160,0.28)', color:'#6ef0a0', flexShrink:0 }}>
+      <svg width="11" height="11" viewBox="0 0 12 12" fill="none">
+        <g transform="rotate(45 6 6)">
+          <path d="M6 1v10M1 6h10" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"/>
+        </g>
+      </svg>
+    </span>
+  )
+}
+function TagTank() {
+  return (
+    <span title="Tank ability" style={{ display:'inline-flex', alignItems:'center', justifyContent:'center', width:20, height:20, borderRadius:3, background:'rgba(96,160,255,0.10)', border:'1px solid rgba(96,160,255,0.28)', color:'#60a0ff', flexShrink:0 }}>
+      <svg width="11" height="11" viewBox="0 0 12 12" fill="none">
+        <path d="M6 1L2 3.5v3C2 9 4 11 6 11s4-2 4-4.5v-3L6 1z" stroke="currentColor" strokeWidth="1.4" strokeLinejoin="round"/>
+      </svg>
+    </span>
+  )
+}
+function TagDeadly() {
+  return (
+    <span title="Deadly — use cooldown" style={{ display:'inline-flex', alignItems:'center', justifyContent:'center', width:20, height:20, borderRadius:3, background:'rgba(192,51,40,0.13)', border:'1px solid rgba(192,51,40,0.32)', color:'#ff8070', flexShrink:0 }}>
+      <svg width="11" height="11" viewBox="0 0 12 12" fill="none">
+        <circle cx="6" cy="6" r="4.5" stroke="currentColor" strokeWidth="1.4"/>
+        <path d="M6 3.5V6.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+        <circle cx="6" cy="8.5" r="0.65" fill="currentColor"/>
+      </svg>
+    </span>
+  )
+}
+function TagInterrupt() {
+  return (
+    <span title="Interrupt" style={{ display:'inline-flex', alignItems:'center', justifyContent:'center', width:20, height:20, borderRadius:3, background:'rgba(196,138,40,0.11)', border:'1px solid rgba(196,138,40,0.28)', color:'#dfa838', flexShrink:0 }}>
+      <svg width="11" height="11" viewBox="0 0 12 12" fill="none">
+        <path d="M2 6h8M7 3l3 3-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+      </svg>
+    </span>
+  )
+}
+
+function AbilityCard({ ability }: { ability: AbilityItem }) {
+  const borderColor = ability.important
+    ? 'rgba(192,51,40,0.45)'
+    : ability.dodge
+    ? 'rgba(110,240,160,0.3)'
     : ability.interrupt
-    ? { bg: 'rgba(196,138,40,0.1)', border: 'rgba(196,138,40,0.24)', text: '#dfa838', label: 'INTERRUPT' }
-    : ability.important
-    ? { bg: 'rgba(192,51,40,0.14)', border: 'rgba(192,51,40,0.3)', text: '#ff8070', label: 'KEY' }
-    : null
+    ? 'rgba(196,138,40,0.35)'
+    : 'rgba(255,255,255,0.07)'
 
   return (
-    <details className="bg-white/[0.025] group" style={{ borderLeft: ability.important ? '2px solid rgba(192,51,40,0.4)' : '2px solid rgba(255,255,255,0.06)', borderRadius: '0 3px 3px 0' }}>
-      <summary className="flex items-center gap-2 px-3 py-2 cursor-pointer select-none hover:bg-white/[0.04] transition-colors list-none flex-wrap">
-        {ability.icon && <span className="text-sm flex-shrink-0">{ability.icon}</span>}
-        <span className="text-[12px] font-bold tracking-[0.08em] uppercase text-foreground" style={{ fontFamily: 'var(--font-barlow-condensed)' }}>
+    <details
+      className="group bg-[#0d1018] overflow-hidden"
+      style={{ borderLeft: `2px solid ${borderColor}` }}
+    >
+      <summary className="flex items-center gap-3 px-4 py-3 cursor-pointer select-none list-none hover:bg-white/[0.03] transition-colors">
+        {/* icon slot */}
+        <div className="w-8 h-8 rounded flex-shrink-0 flex items-center justify-center text-base bg-white/[0.04] border border-white/[0.08]">
+          {ability.icon ?? '✦'}
+        </div>
+
+        {/* name */}
+        <span
+          className="flex-1 text-[13px] font-bold tracking-[0.07em] uppercase text-foreground"
+          style={{ fontFamily: 'var(--font-barlow-condensed)' }}
+        >
           {ability.name}
         </span>
-        {tagColor && (
-          <span
-            className="text-[8px] font-bold tracking-[0.14em] uppercase px-1.5 py-[1px] rounded-[2px] flex-shrink-0"
-            style={{ background: tagColor.bg, border: `1px solid ${tagColor.border}`, color: tagColor.text }}
-          >
-            {tagColor.label}
-          </span>
-        )}
-        <svg className="w-3 h-3 text-foreground/20 transition-transform group-open:rotate-180 flex-shrink-0 ml-auto" viewBox="0 0 12 12" fill="none">
-          <path d="M2 4l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+
+        {/* tags — right side */}
+        <div className="flex items-center gap-1.5">
+          {ability.role === 'tank' && <TagTank />}
+          {ability.important && <TagDeadly />}
+          {ability.dodge && <TagDodge />}
+          {ability.interrupt && <TagInterrupt />}
+        </div>
+
+        {/* chevron */}
+        <svg
+          className="w-3.5 h-3.5 text-foreground/20 flex-shrink-0 transition-transform group-open:rotate-180"
+          viewBox="0 0 14 14" fill="none"
+        >
+          <path d="M3 5l4 4 4-4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"/>
         </svg>
       </summary>
-      <div>
-        <p className="text-[13px] text-foreground/45 leading-[1.7] px-3 pb-3 pt-1" dangerouslySetInnerHTML={{ __html: ability.desc }} />
+
+      {/* body */}
+      <div className="px-4 pb-4 pt-1 pl-[3.75rem]">
+        <p className="text-[13.5px] text-foreground/50 leading-[1.72]">{ability.desc}</p>
         {ability.children && (
-          <div className="mx-3 mb-3 ml-6 border-l border-white/[0.06] pl-3 flex flex-col gap-1.5">
+          <div className="mt-3 border-l-2 border-white/[0.06] pl-3 flex flex-col gap-2">
             {ability.children.map((child, ci) => (
-              <div key={ci} className="bg-white/[0.018] rounded-[3px] px-3 py-2">
-                <div className="text-[10.5px] font-bold tracking-[0.07em] uppercase text-foreground/60 mb-1" style={{ fontFamily: 'var(--font-barlow-condensed)' }}>
+              <div key={ci} className="bg-white/[0.025] rounded-[3px] px-3 py-2.5">
+                <div
+                  className="text-[10.5px] font-bold tracking-[0.08em] uppercase text-foreground/55 mb-1"
+                  style={{ fontFamily: 'var(--font-barlow-condensed)' }}
+                >
                   {child.name}
                 </div>
-                <p className="text-[12.5px] text-foreground/35 leading-[1.65]">{child.desc}</p>
+                <p className="text-[12.5px] text-foreground/38 leading-[1.65]">{child.desc}</p>
               </div>
             ))}
           </div>
@@ -373,21 +437,32 @@ function AbilityItem({ ability }: { ability: AbilityItem }) {
 
 function AbilitiesSection({ boss }: { boss: Boss }) {
   if (!boss.abilities.length) return null
+  const color = ZONE_COLORS[boss.zc]
   const { ref, visible } = useReveal()
   return (
     <section className="py-16 px-6 md:px-12 lg:px-20 bg-[#0d1018]">
       <div className="max-w-[1200px] mx-auto">
         <SectionLabel>Ability Reference</SectionLabel>
         <SectionHeading>Full Ability List</SectionHeading>
-        <div ref={ref} className={`reveal ${visible ? 'visible' : ''} flex flex-col gap-6`}>
+        <div ref={ref} className={`reveal ${visible ? 'visible' : ''} flex flex-col gap-5`}>
           {boss.abilities.map((phase, pi) => (
             <div key={pi}>
-              <p className="text-[10px] font-bold tracking-[0.28em] uppercase text-foreground/25 mb-2" style={{ fontFamily: 'var(--font-barlow-condensed)' }}>
-                {phase.phase}
-              </p>
+              {/* phase header bar */}
+              <div
+                className="px-4 py-2.5 mb-[2px] bg-[#111620]"
+                style={{ borderLeft: `3px solid ${color}` }}
+              >
+                <span
+                  className="text-[11px] font-bold tracking-[0.2em] uppercase text-foreground/45"
+                  style={{ fontFamily: 'var(--font-barlow-condensed)' }}
+                >
+                  {phase.phase}
+                </span>
+              </div>
+              {/* ability cards */}
               <div className="flex flex-col gap-[2px]">
                 {phase.items.map((ability, ai) => (
-                  <AbilityItem key={ai} ability={ability} />
+                  <AbilityCard key={ai} ability={ability} />
                 ))}
               </div>
             </div>
