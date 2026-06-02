@@ -15,7 +15,7 @@ const barlow = Barlow({
 })
 
 const barlowCondensed = Barlow_Condensed({
-  weight: ['400', '500', '600', '700', '800'],
+  weight: ['400', '600', '700', '800'],
   subsets: ['latin'],
   variable: '--font-barlow-condensed',
 })
@@ -31,6 +31,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       lang="en"
       className={`dark ${bebasNeue.variable} ${barlow.variable} ${barlowCondensed.variable}`}
     >
+      <head>
+        <link rel="preconnect" href="https://img.youtube.com" />
+      </head>
       <body style={{ fontFamily: 'var(--font-barlow), sans-serif' }}>
         {children}
       </body>

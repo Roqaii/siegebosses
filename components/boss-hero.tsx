@@ -181,8 +181,8 @@ export function BossHero({ boss }: { boss: Boss }) {
                 src={`https://img.youtube.com/vi/${boss.video}/mqdefault.jpg`}
                 alt="Video guide thumbnail"
                 fill
+                sizes="160px"
                 className="object-cover opacity-75 group-hover:opacity-100 group-hover:scale-105 transition-all duration-300"
-                unoptimized
               />
               {/* Gradient over thumbnail */}
               <div className="absolute inset-0 bg-gradient-to-r from-transparent to-black/30" />

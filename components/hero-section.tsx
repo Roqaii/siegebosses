@@ -16,9 +16,13 @@ export function HeroSection() {
 
   useEffect(() => {
     setMounted(true)
-    const onScroll = () => setScrollY(window.scrollY)
+    let rafId: number
+    const onScroll = () => {
+      cancelAnimationFrame(rafId)
+      rafId = requestAnimationFrame(() => setScrollY(window.scrollY))
+    }
     window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
+    return () => { window.removeEventListener('scroll', onScroll); cancelAnimationFrame(rafId) }
   }, [])
 
   const heroProgress = Math.min(scrollY / (heroRef.current?.offsetHeight || 800), 1)
