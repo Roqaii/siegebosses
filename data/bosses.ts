@@ -755,42 +755,34 @@ export const BOSSES: Boss[] = [
     video: 'bb4FEggKxFw',
     setup: { t: 2, h: '2', d: '6' },
     rule: 'Never DPS Nazgrim during Defensive Stance - every hit gives him 3 Rage. His abilities scale with Rage, and a single poorly-timed attack can push him to 100 and spawn a permanent Ravager axe.',
-    overview: 'A rage management fight. Nazgrim cycles through three stances in a fixed order: Battle → Berserker → Defensive. Keep his Rage as low as possible by handling Sundering Blow swaps cleanly, destroying Banners fast, and going completely cold during Defensive Stance. On Heroic, add waves start at 3 and grow - add handling is the primary execution challenge.',
+    overview: 'A rage management fight. Nazgrim cycles through three stances in a fixed order: Battle → Berserker → Defensive. Keep his Rage as low as possible by handling Sundering Blow swaps cleanly, destroying Banners fast, and going completely cold during Defensive Stance. On Heroic, 3 add per wave - add handling is the primary execution challenge.',
     mechs: [
       { icon: '🛡️', name: 'Defensive Stance - Full Stop', important: true, desc: 'Every hit (except the debuffed tank) gives Nazgrim 3 Rage. All DPS stops the instant the stance is called. Kill adds, destroy Banners, do nothing to the boss.' },
       { icon: '⚔️', name: 'Berserker Stance - Cooldown Window', desc: 'Nazgrim takes 25% more damage - pop DPS cooldowns here. He also generates 100% more Rage from abilities.' },
       { icon: '🗡️', name: 'Sundering Blow - Swap at 3', important: true, desc: 'Unavoidable 5 Rage per cast, plus 5 per existing stack. Swap at exactly 3 stacks - a 4th stack costs 20 Rage (40 in Berserker).' },
-      { icon: '🚩', name: 'Kor\'kron Banner - Instant Priority', important: true, desc: 'Costs him 50 Rage to place, but pays for itself immediately if left up - every add attack through it gives 3 Rage. Assign one DPS to destroy it the second it spawns.' },
-      { icon: '🧙', name: 'Add Kill Priority', desc: 'Warshaman first (totem heals can undo the entire kill). Arcweaver second (interrupt every cast). Assassin third (face it, never turn your back). Sniper: targeted healer runs behind it. Iron Blade: lowest priority, tank and cleave.' },
+      { icon: '🚩', name: 'Kor\'kron Banner - Instant Priority', important: true, desc: 'Costs him 50 Rage to place, but pays for itself immediately if left up - every add attack through it gives 3 Rage. Tanks help destroy it the second it spawns.' },
+      { icon: '🧙', name: 'Add Kill Priority', desc: 'Warshaman first (totem heals can undo the entire fight). Arcweaver second (interrupt every cast). Assassin third (face it, never turn your back). Sniper: targeted healer face it to a wall. Iron Blade: lowest priority, tank and cleave.' },
     ],
     heroic: [
       'Execute: 3M physical hit on the current tank. Use a minor mitigation cooldown - cannot be dodged, blocked, or parried.',
-      'Kor\'kron Snipers added to add waves. The targeted healer runs behind the Sniper so Multi-Shot fires into the wall.',
-      'Add waves start at 3 and grow over the fight.',
+      'Kor\'kron Snipers added to add waves. The targeted healer faces it to a wall so Multi-Shot fires into the wall.',
+      '3 adds per wave.',
     ],
     lust: 'Just before the 10% burn - ideally entering a Battle or Berserker Stance window with no adds alive.',
     diff: 2,
     roles: [
-      { color: '#e8352a', label: 'Tanks', note: 'Call stance changes on voice so the raid stops instantly. Swap Sundering Blow at exactly 3 stacks - never 4. The debuffed tank is the only player who can hit the boss in Defensive Stance.' },
+      { color: '#e8352a', label: 'Tanks', note: 'Call stance changes on voice so the raid stops instantly. Swap Sundering Blow at exactly 3 stacks - never 4. The debuffed tanks is the only player who can hit the boss in Defensive Stance.' },
       { color: '#1db89a', label: 'Healers', note: 'Berserker Stance spikes - pre-HoT the tank before Execute lands. If targeted by a Sniper, break position immediately and run behind it. Keep yourself alive while the raid handles other adds.' },
-      { color: '#2e8fdf', label: 'DPS', note: 'Absolute stop on Nazgrim the instant Defensive Stance is called. Own an interrupt for Arcweavers. One DPS permanently assigned to the Banner.' },
+      { color: '#2e8fdf', label: 'DPS', note: 'Absolute stop on Nazgrim the instant Defensive Stance is called. Kill adds based on priority.' },
     ],
     strat: [
       {
         phase: 'General - Stance Rotation',
         points: [
-          { icon: null, role: 'All', note: 'Stances cycle: Battle → Berserker → Defensive. Battle: standard DPS. Berserker: pop cooldowns, he deals and takes 25% more. Defensive: full stop on the boss - adds, Banner, nothing else.' },
-          { icon: '🛡️', role: 'Tanks', note: 'Swap at exactly 3 Sundering Blow stacks - call it on voice. The debuffed tank is the only player who can hit the boss in Defensive Stance. Both tanks stay central to reach adds quickly.' },
-          { icon: '💚', role: 'Healers', note: 'Light in Battle. Berserker = tank spike window - throughput ready. Defensive is your reset; top the raid.' },
-          { icon: '⚔️', role: 'DPS', note: 'Battle and Berserker: maximize boss uptime between add spawns. Defensive: stop hitting the boss. Cleave adds, destroy the Banner. Save DPS cooldowns for Berserker windows.' },
-        ],
-      },
-      {
-        phase: 'Rage Abilities',
-        points: [
-          { icon: null, role: 'All', note: 'Keep Rage below 70 (no War Song) and absolutely below 100 (no Ravager). Key levers: dodge Shockwave Aftershocks (each player hit = 3 Rage), destroy Banner within 3 seconds, and swap tanks cleanly at 3 stacks.' },
-          { icon: '⚔️', role: 'DPS', note: 'Shockwave: dodge the Aftershock cracks - each player hit gives 3 Rage. Banner: destroy within 3 seconds - one DPS permanently owns this role. War Song (70 Rage): unavoidable 65% max HP - use personal cooldowns. Ravager (100 Rage): permanent spinning axe, never reach 100.' },
-          { icon: '🛡️', role: 'Tanks', note: 'Sundering Blow is the primary Rage generator. Late swaps (4+ stacks) are the most common cause of unexpected Ravager spawns, especially doubled in Berserker Stance.' },
+          { icon: null, role: 'All', note: 'Stances cycle: Battle → Berserker → Defensive. Battle: standard DPS. Berserker: pop cooldowns, he deals and takes 25% more damage. Defensive: full stop on the boss - adds, Banner, nothing else.' },
+          { icon: '🛡️', role: 'Tanks', note: 'Swap at exactly 3 Sundering Blow stacks. Execute hits very hard, use CDs. The debuffed tanks are the only player who can hit the boss in Defensive Stance. Both tanks stay central to reach adds quickly.' },
+          { icon: '💚', role: 'Healers', note: 'Berserker = tank spike window - throughput ready. Defensive is your reset; top the raid.' },
+          { icon: '⚔️', role: 'DPS', note: 'Battle and Berserker stances: maximize boss uptime between add spawns. Defensive: stop hitting the boss. Cleave adds, destroy the Banner. Save DPS cooldowns for Berserker windows.' },
         ],
       },
       {
@@ -798,7 +790,7 @@ export const BOSSES: Boss[] = [
         points: [
           { icon: null, role: 'All', note: 'Tank Nazgrim facing the door with the raid between boss and spawn point. Kill priority: Warshaman → Arcweaver → Assassin → Sniper → Iron Blade. Stuns and slows work on all types.' },
           { icon: '🛡️', role: 'Tanks', note: 'Off-tank picks up Iron Blades and any loose adds. Keep Warshamans away from Nazgrim - a totem next to the boss heals him faster than the raid can DPS.' },
-          { icon: '💚', role: 'Healers', note: 'If targeted by a Sniper: get Hunter\'s Mark, run behind the Sniper so it faces the wall. Multi-Shot then only hits you. Focus on keeping yourself alive; let your co-healer cover the raid.' },
+          { icon: '💚', role: 'Healers', note: 'If targeted by a Sniper run behind the Sniper so it faces the wall. Multi-Shot then only hits you. Focus on keeping yourself alive; let your co-healer cover the raid.' },
           { icon: '⚔️', role: 'DPS', note: 'Arcweavers: 2 dedicated interrupters, locked out at all times. Warshamans: 1 DPS owns them. Assassins: fixated player always faces it, never turns away. Iron Blades: ignore until everything else is dead.' },
         ],
       },
@@ -807,7 +799,7 @@ export const BOSSES: Boss[] = [
         points: [
           { icon: null, role: 'All', note: 'At 13–15%, clean up active adds and prep the raid. Time the burn for just after a Defensive Stance. At 10% a full wave of all 5 add types spawns. Pop Bloodlust and burn.' },
           { icon: '🛡️', role: 'Tanks', note: 'At ~11–12%, reposition Nazgrim all the way back to the door - the 10% wave spawns behind the raid and never reaches the boss. The off-tank meets the add wave and picks everything up solo - especially the Warshaman.' },
-          { icon: '💚', role: 'Healers', note: 'The off-tank is alone holding a full add wave - priority heal target. Split coverage between both tanks.' },
+          { icon: '💚', role: 'Healers', note: 'The off-tank is alone holding a full add wave. Split coverage between both tanks.' },
           { icon: '⚔️', role: 'DPS', note: 'All DPS to Nazgrim at the door. Trust the off-tank on adds. If the Warshaman breaks free near the boss, call it immediately.' },
         ],
       },
