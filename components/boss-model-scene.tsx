@@ -5,7 +5,7 @@ import { Canvas, useFrame } from '@react-three/fiber'
 import { useGLTF, Environment, ContactShadows } from '@react-three/drei'
 
 // Set Draco decoder path so compressed GLB files load correctly
-useGLTF.setDecoderPath('https://www.gstatic.com/draco/versioned/decoders/1.5.6/')
+useGLTF.setDecoderPath('/draco/')
 import type { Group } from 'three'
 
 // Per-model tuning — add an entry here whenever a new boss model is added
