@@ -41,11 +41,7 @@ export function SiteNav() {
     <>
       {/* ── NAV BAR ── */}
       <nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          scrolled
-            ? 'bg-[rgba(6,8,14,0.97)] border-b border-white/[0.1] backdrop-blur-2xl shadow-[0_4px_32px_rgba(0,0,0,0.6)]'
-            : 'bg-transparent border-b border-transparent'
-        }`}
+        className="fixed top-0 left-0 right-0 z-50 transition-all duration-500 bg-[rgba(6,8,14,0.97)] border-b border-white/[0.1] backdrop-blur-2xl shadow-[0_4px_32px_rgba(0,0,0,0.6)]"
       >
         {/* Top bar */}
         <div className="flex items-center h-[52px] px-5 gap-3">
@@ -53,9 +49,7 @@ export function SiteNav() {
           {/* Brand */}
           <Link
             href="/"
-            className={`flex items-center gap-2.5 flex-shrink-0 transition-all duration-300 ${
-              scrolled ? 'opacity-100' : 'opacity-0 pointer-events-none'
-            }`}
+            className="flex items-center gap-2.5 flex-shrink-0"
           >
             <span
               style={{ fontFamily: 'var(--font-bebas)' }}
@@ -72,10 +66,10 @@ export function SiteNav() {
           </Link>
 
           {/* Divider */}
-          <div className={`w-px h-5 bg-white/[0.1] flex-shrink-0 transition-all duration-300 ${scrolled ? 'opacity-100' : 'opacity-0'}`} />
+          <div className="w-px h-5 bg-white/[0.1] flex-shrink-0" />
 
           {/* Current boss indicator */}
-          <div className={`flex items-center gap-3 flex-1 min-w-0 overflow-hidden transition-all duration-300 ${scrolled ? 'opacity-100' : 'opacity-0'}`}>
+          <div className="flex items-center gap-3 flex-1 min-w-0 overflow-hidden">
             {activeBoss ? (
               <>
                 <span
@@ -116,7 +110,7 @@ export function SiteNav() {
               popoverOpen
                 ? 'bg-white/[0.1] border-white/25 text-white'
                 : 'bg-white/[0.05] border-white/[0.1] text-white/70 hover:bg-white/[0.08] hover:border-white/20 hover:text-white'
-            } ${scrolled ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+            }`}
           >
             {/* Hamburger / X icon */}
             <div className="flex flex-col gap-[4px] flex-shrink-0 w-[14px]">
@@ -146,9 +140,7 @@ export function SiteNav() {
             href="https://discord.gg/t8Fd5K9mcd"
             target="_blank"
             rel="noopener noreferrer"
-            className={`flex-shrink-0 flex items-center gap-2 bg-[#5865F2] hover:bg-[#4752c4] transition-all rounded-[3px] px-4 py-2 ${
-              scrolled ? 'opacity-100' : 'opacity-0 pointer-events-none'
-            }`}
+            className="flex-shrink-0 flex items-center gap-2 bg-[#5865F2] hover:bg-[#4752c4] transition-all rounded-[3px] px-4 py-2"
           >
             <svg viewBox="0 -28.5 256 256" fill="#fff" width="14" height="14" className="flex-shrink-0">
               <path d="M216.856339,16.5966031 C200.285002,8.84328665 182.566144,3.2084988 164.041564,0 C161.766523,4.11318106 159.108624,9.64549908 157.276099,14.0464379 C137.583995,11.0849896 118.072967,11.0849896 98.7430163,14.0464379 C96.9108417,9.64549908 94.1925838,4.11318106 91.8971895,0 C73.3526068,3.2084988 55.6133949,8.86399117 39.0420583,16.6376612 C5.61752293,67.146514 -3.4433191,116.400813 1.08711069,164.955721 C23.2560196,181.510915 44.7403634,191.567697 65.8621325,198.148576 C71.0772151,190.971126 75.7283628,183.341335 79.7352139,175.300261 C72.104019,172.400575 64.7949724,168.822202 57.8887866,164.667963 C59.7209612,163.310589 61.5131304,161.891452 63.2445898,160.431257 C105.36741,180.133187 151.134928,180.133187 192.754523,160.431257 C194.506336,161.891452 196.298154,163.310589 198.110326,164.667963 C191.183787,168.842556 183.854737,172.420929 176.223542,175.320965 C180.230393,183.341335 184.861538,190.991831 190.096624,198.16893 C211.238746,191.588051 232.743023,181.531619 254.911949,164.955721 C260.227747,108.668201 245.831087,59.8662432 216.856339,16.5966031 Z" />
@@ -160,7 +152,7 @@ export function SiteNav() {
         </div>
 
         {/* Zone progress bar */}
-        <div className={`flex h-[3px] transition-opacity duration-300 ${scrolled ? 'opacity-100' : 'opacity-0'}`}>
+        <div className="flex h-[3px]">
           {ZONES.map(({ key }, i) => {
             const color = ZONE_COLORS[key]
             const bosses = BOSSES.filter((b) => b.zc === key)

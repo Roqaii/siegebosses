@@ -9,7 +9,7 @@ export const BOSSES: Boss[] = [
     sub: 'Sha-Corrupted Elemental',
     zone: 1, zc: 'z1',
     video: 'UYWugqvxGUk',
-    setup: { t: 2, h: '2-3', d: '5-6 ranged preferred' },
+    setup: { t: 2, h: '2-3', d: '5-6' },
     rule: 'Don\'t stack - spread 5+ yards at all times, kill and or heal every  Sha puddle in your zone during the split phase, and sidestep Swirl.',
     overview: 'Two alternating phases. Phase 1 shortens each cycle as you reduce Corruption in Phase 2 - kill black puddles, heal blue ones, don\'t let any reach the center. Repeat until Corruption hits 0.',
     mechs: [
@@ -92,7 +92,7 @@ export const BOSSES: Boss[] = [
     sub: 'Rook Stonetoe · He Softfoot · Sun Tenderheart',
     zone: 1, zc: 'z1',
     video: 'z6ukoQxgfdc',
-    setup: { t: 2, h: 3, d: 5 },
+    setup: { t: 2, h: '2-3', d: '5-6' },
     rule: 'All three bosses must die within the same 20-second window. DM push order: Sun → Rook → He. Never trigger two DM phases simultaneously.',
     overview: 'Three independent bosses that must die within the same 20-second window. Equalize their HP throughout the fight and commit only when all three are at ~10%. Each boss phases at 66% and 33% into a Desperate Measures sequence - never trigger two DM phases simultaneously. DM phases reset each boss\'s escalating Heroic ability, so the order you push them matters. Recommended push order: Sun → Rook → He, then repeat.',
     mechs: [
@@ -226,7 +226,7 @@ export const BOSSES: Boss[] = [
     sub: 'Amalgam of Corruption',
     zone: 1, zc: 'z1',
     video: 'Gn7IBNQEmlU',
-    setup: { t: 2, h: '2-3', d: '5-6' },
+    setup: { t: 2, h: '2', d: '6' },
     rule: 'Corruption makes you deal less damage to the boss. Cleanse through the Trail Realm as fast as possible - every second you are corrupted is damage the raid is missing.',
     overview: 'A corruption-cleansing fight with a 7-minute hard enrage. Everyone starts at 75 Corruption. Enter the Purifying Light orb to take your individual trial - complete it and return cleansed. On Heroic, DPS cleanse 1-2 at a time rather than all at once, clearing adds pressure between trial windows.',
     mechs: [
@@ -243,7 +243,7 @@ export const BOSSES: Boss[] = [
       'Trial enemies hit significantly harder - use defensives properly inside.',
     ],
     lust: 'Lust when all DPS are cleansed and line up with major cooldowns.',
-    diff: 2,
+    diff: 1,
     roles: [
       { color: '#e8352a', label: 'Tanks', note: 'One on the boss at all times - swap at up to 3 Self Doubt stacks, timing dictated by when the other tank returns from their trial. Off-tank picks up all adds from completed trials and soaks Residual Corruption orbs. Both tanks still cleanse on Heroic - coordinate the handoff so the boss is always covered.' },
       { color: '#1db89a', label: 'Healers', note: 'Always cleanse - the +30% healing buff makes the back half survivable. Never leave zero healers outside. Start rotating raid CDs (Barrier, Devotion Aura, Spirit Link) at ~40% as Icy Fear ramps hard.' },
@@ -459,7 +459,7 @@ export const BOSSES: Boss[] = [
     sub: 'Tower + Ground Split Fight',
     zone: 2, zc: 'z2',
     video: 'gHt8_fKEJ9Q',
-    setup: { t: 2, h: '2-3', d: '5-6' },
+    setup: { t: 2, h: '2', d: '6' },
     rule: 'Tower speed controls the entire fight. A slow tower team means more Drake Fire stacks on the ground team - every second the tower drags is more unavoidable spike damage below.',
     overview: 'A two-phase fight. Phase 1 is an extended split-team add gauntlet: the ground team defends NPC faction leaders while a tower team clears two towers to unlock anti-air turrets. Shooting Galakras with both turrets simultaneously triggers Phase 2 - a straightforward burn with a soft enrage. The difficulty is Phase 1 pacing: kill priorities on the ground are strict, Drake Fire ramps the longer the tower takes, and on Heroic the Demolitionist NPCs must be protected or the towers never open.',
     mechs: [
@@ -577,7 +577,7 @@ export const BOSSES: Boss[] = [
       'Enrage is tight because Siege Phase is zero DPS. Every Assault window must be fully maximized.',
     ],
     lust: 'On pull - the first Assault Phase is the longest uninterrupted DPS window of the fight.',
-    diff: 2,
+    diff: 3,
     roles: [
       { color: '#e8352a', label: 'Tanks', note: 'Swap rotation is 2-3-3-3 Flame Vents stacks (2 on first set, 3 every set after). Off-tank is primary mine soaker. Both tanks stack with the raid before every Shock Pulse.' },
       { color: '#1db89a', label: 'Healers', note: '3 healers required. Assault Phase is light. Siege Phase is heavy - assign a raid cooldown to each of the three Shock Pulses.' },
@@ -753,7 +753,7 @@ export const BOSSES: Boss[] = [
     sub: 'Rage Management · Stance Control',
     zone: 2, zc: 'z2',
     video: 'bb4FEggKxFw',
-    setup: { t: 2, h: '2-3', d: '5-6' },
+    setup: { t: 2, h: '2', d: '6' },
     rule: 'Never DPS Nazgrim during Defensive Stance - every hit gives him 3 Rage. His abilities scale with Rage, and a single poorly-timed attack can push him to 100 and spawn a permanent Ravager axe.',
     overview: 'A rage management fight. Nazgrim cycles through three stances in a fixed order: Battle → Berserker → Defensive. Keep his Rage as low as possible by handling Sundering Blow swaps cleanly, destroying Banners fast, and going completely cold during Defensive Stance. On Heroic, add waves start at 3 and grow - add handling is the primary execution challenge.',
     mechs: [
@@ -966,7 +966,7 @@ export const BOSSES: Boss[] = [
       'If your healer gets the Staff of Resonating Water buff, aim toward mobs at all times - the wave proc does ~700k to all enemies hit and heals allies.',
     ],
     lust: 'Second room, first boss crate - you just killed a boss and have no cooldowns. Bloodlust fills the gap and burns the second boss fast.',
-    diff: 2,
+    diff: 4,
     roles: [
       { color: '#e8352a', label: 'Tank (per side)', note: 'Designated crate opener - you decide when to open the next wave. Pull boss crates to the center for Spark cleave overlap. Move mobs out of Crimson Reconstitution pools immediately. Face Brewmaster away from the group.' },
       { color: '#1db89a', label: 'Healer (per side)', note: 'Second crate opener - preemptively open the next set while DPS are still killing the current wave. Dispel Torment (Mogu Shadow Ritualist) on cooldown. Purge Rage of the Empress instantly. If you get Staff of Resonating Water, face mobs and aim the wave proc at all times.' },
@@ -1062,7 +1062,7 @@ export const BOSSES: Boss[] = [
     sub: 'Healing CD Rotation · Kiting · Cage Management',
     zone: 3, zc: 'z3',
     video: '',
-    setup: { t: 1, h: 3, d: '6 (ranged preferred)' },
+    setup: { t: 1, h: 3, d: 6 },
     rule: 'Screech hits harder than any heal can keep up with. Survive Phase 1 through a pre-planned CD rotation - not raw healing throughput.',
     overview: 'Two alternating phases. Phase 1: Thok is tanked, Screech accelerates every cast, raid must survive on a rotating CD list until you deliberately trigger Phase 2 (stack 5 players below 50% HP within 10 yards). Phase 2: Thok fixates random players and chases them - kite for 5 fixates, kill the Jailer, open a cage to end the phase. Repeat. Three cages: Acid (Akolik) → Frost (Gorai) → Fire (Montak). Fire goes last because Burning Blood makes stacking impossible and forces an early Phase 2 transition - save it for the final push.',
     mechs: [
@@ -1080,7 +1080,7 @@ export const BOSSES: Boss[] = [
       'Fixates are semi-predictable: run back within ~30 yards after your fixate ends to exit the valid target pool and avoid a double fixate.',
     ],
     lust: 'Phase 2 after the Acid (Akolik) cage - first kite phase with full CDs and no added debuffs yet.',
-    diff: 2,
+    diff: 4,
     roles: [
       { color: '#e8352a', label: 'Tank', note: 'Single tank is standard. Face Thok away from the raid at all times. Track your stacking breath debuff; call for Phase 2 before stacks become lethal. In Phase 2: pick up the Jailer near the entrance, kill it for the key, open the next cage on fixate 5.' },
       { color: '#1db89a', label: 'Healers', note: '3 healers required. Your job is executing the pre-planned CD rotation, not raw throughput. Pre-cast every HoT and shield before each Screech. BoPing a Druid for uninterrupted Tranquility or a Shaman for Ascendance is a major gain - plan it before pull. Dispel Corrosive Blood (Acid phase) as fast as possible; Mass Dispel is extremely valuable.' },
@@ -1202,7 +1202,7 @@ export const BOSSES: Boss[] = [
       'Belt lasers move on Heroic. Watch for the swirling floor indicator showing where the safe gap will appear next - move early, not late.',
     ],
     lust: 'On pull - the opening is the cleanest window of the entire fight before the room fills with ground effects.',
-    diff: 3,
+    diff: 5,
     roles: [
       { color: '#e8352a', label: 'Tanks', note: '3-4-3-4 Electrostatic Charge rotation. Debuffed tank immediately picks up and burns the Shredder using the stack damage bonus - kite it through Sawblades. Keep the Shredder 35+ yards from Blackfuse at all times or the boss heals it.' },
       { color: '#1db89a', label: 'Healers', note: '2 healers is correct - healing is low outside Overcharged Magnet windows. Overcharged Magnet forces constant movement; pre-cast HoTs before it activates. Stay within range of the Shredder tank, who is often far from the raid.' },
@@ -1310,7 +1310,7 @@ export const BOSSES: Boss[] = [
       'Iyyokuk: Fiery Edge on Heroic connects 8 of 10 players simultaneously. Stay spread at all times - use a raid cooldown for every cast once Iyyokuk has stacks.',
     ],
     lust: 'On Kaz\'tik (boss 6) - prevent a mature Kunchong from spawning. High personal DPS matters more here than anywhere else in the fight.',
-    diff: 3,
+    diff: 5,
     roles: [
       { color: '#e8352a', label: 'Tank A - Skeer / Xaril', note: 'Tank Skeer away from the center entrance so Bloods target Rik\'kal, not Skeer. Never tank Rik\'kal or Kil\'ruk. Swap Korven\'s Vicious Assault at halfway through each channel. Pick up Korven\'s corpse power (Master of Amber) - use it on Kaz\'tik\'s Mesmerize targets.' },
       { color: '#e8352a', label: 'Tank B - Rik\'kal / Kil\'ruk', note: 'Allow the first Injection but block every subsequent one with active mitigation. Never tank Skeer or Xaril. On Kil\'ruk, use cooldowns aggressively - his damage is the highest of any Paragon.' },
@@ -1486,7 +1486,7 @@ export const BOSSES: Boss[] = [
       'Phase 4 (Stormwind) is Heroic-only. Off-tank kites the Iron Star. Malice + Bombardment overlap: 3 pre-assigned players with large personal defensives soak Malice #4 together while rest of raid spreads.',
     ],
     lust: 'At the Phase 3 transition (Garrosh hits 10% for the first time). All DPS cooldowns should be held for this window.',
-    diff: 3,
+    diff: 5,
     modelFile: 'garrosh2.glb',
     roles: [
       { color: '#e8352a', label: 'Tanks', note: 'Swap at 3 Gripping Despair stacks. Use a defensive when stacks expire in Phase 3 (Explosive Despair). Phase 4: main tank holds Garrosh in position; off-tank kites the Iron Star along the wall to intercept Manifest Rage.' },
