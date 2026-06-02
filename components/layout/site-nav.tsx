@@ -14,16 +14,9 @@ const ZONES: { key: ZoneKey; label: string }[] = [
 ]
 
 export function SiteNav() {
-  const [scrolled, setScrolled] = useState(false)
   const [popoverOpen, setPopoverOpen] = useState(false)
   const pathname = usePathname()
   const popoverRef = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 60)
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setPopoverOpen(false) }

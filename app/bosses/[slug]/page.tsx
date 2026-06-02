@@ -8,8 +8,9 @@ export function generateStaticParams() {
   return BOSSES.map((boss) => ({ slug: boss.slug }))
 }
 
-export function generateMetadata({ params }: { params: { slug: string } }) {
-  const boss = getBossBySlug(params.slug)
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params
+  const boss = getBossBySlug(slug)
   if (!boss) return {}
   return {
     title: `${boss.name} — Heroic SoO Guide`,
@@ -17,8 +18,9 @@ export function generateMetadata({ params }: { params: { slug: string } }) {
   }
 }
 
-export default function BossPage({ params }: { params: { slug: string } }) {
-  const boss = getBossBySlug(params.slug)
+export default async function BossPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params
+  const boss = getBossBySlug(slug)
   if (!boss) notFound()
 
   const allSlugs = BOSSES.map((b) => b.slug)

@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import type { Boss, AbilityItem } from '@/types/boss'
 import { ZONE_COLORS } from '@/types/boss'
@@ -167,6 +167,22 @@ function MechanicsSection({ boss }: { boss: Boss }) {
 }
 
 /* ─── HEROIC CALLOUTS ────────────────────────── */
+function HeroicItem({ item, index }: { item: string; index: number }) {
+  const { ref, visible } = useReveal()
+  return (
+    <div
+      ref={ref}
+      className={`reveal delay-${Math.min(index + 1, 6)} ${visible ? 'visible' : ''} bg-[#0d1018] px-6 py-5 relative`}
+    >
+      <div className="absolute top-5 left-0 w-[3px] h-[calc(100%-2.5rem)] bg-[#c48a28] rounded-r-sm" />
+      <div className="text-[2.2rem] leading-none text-[rgba(196,138,40,0.18)] mb-1" style={{ fontFamily: 'var(--font-bebas)' }}>
+        {String(index + 1).padStart(2, '0')}
+      </div>
+      <p className="text-[13px] text-[rgba(220,165,50,0.8)] leading-[1.65]">{item}</p>
+    </div>
+  )
+}
+
 function HeroicSection({ boss }: { boss: Boss }) {
   if (!boss.heroic.length) return null
   return (
@@ -181,22 +197,9 @@ function HeroicSection({ boss }: { boss: Boss }) {
           </span>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-[1px] bg-[rgba(196,138,40,0.1)]">
-          {boss.heroic.map((item, i) => {
-            const { ref, visible } = useReveal()  // eslint-disable-line
-            return (
-              <div
-                key={i}
-                ref={ref}
-                className={`reveal delay-${Math.min(i + 1, 6)} ${visible ? 'visible' : ''} bg-[#0d1018] px-6 py-5 relative`}
-              >
-                <div className="absolute top-5 left-0 w-[3px] h-[calc(100%-2.5rem)] bg-[#c48a28] rounded-r-sm" />
-                <div className="text-[2.2rem] leading-none text-[rgba(196,138,40,0.18)] mb-1" style={{ fontFamily: 'var(--font-bebas)' }}>
-                  {String(i + 1).padStart(2, '0')}
-                </div>
-                <p className="text-[13px] text-[rgba(220,165,50,0.8)] leading-[1.65]">{item}</p>
-              </div>
-            )
-          })}
+          {boss.heroic.map((item, i) => (
+            <HeroicItem key={i} item={item} index={i} />
+          ))}
         </div>
       </div>
     </section>
@@ -204,6 +207,24 @@ function HeroicSection({ boss }: { boss: Boss }) {
 }
 
 /* ─── ROLES ──────────────────────────────────── */
+function RoleCard({ role, index }: { role: Boss['roles'][0]; index: number }) {
+  const { ref, visible } = useReveal()
+  const icon = role.color === '#c0392b' || role.color === '#e8352a' ? '⚔️' : role.color === '#17a07c' || role.color === '#1db89a' ? '💚' : '🎯'
+  return (
+    <div
+      ref={ref}
+      className={`reveal delay-${Math.min(index + 1, 6)} ${visible ? 'visible' : ''} bg-[#0d1018] hover:bg-[#131720] transition-colors p-6 relative overflow-hidden`}
+    >
+      <div className="absolute top-0 left-0 right-0 h-[3px]" style={{ background: role.color }} />
+      <div className="text-[1.5rem] mb-3">{icon}</div>
+      <div className="text-[1.4rem] tracking-[0.06em] mb-3" style={{ fontFamily: 'var(--font-bebas)', color: role.color }}>
+        {role.label}
+      </div>
+      <p className="text-[13px] text-foreground/45 leading-[1.7]">{role.note}</p>
+    </div>
+  )
+}
+
 function RolesSection({ boss }: { boss: Boss }) {
   return (
     <section className="py-16 px-6 md:px-12 lg:px-20 bg-[#080a0f]">
@@ -211,23 +232,9 @@ function RolesSection({ boss }: { boss: Boss }) {
         <SectionLabel>Role Assignments</SectionLabel>
         <SectionHeading>Your Job This Fight</SectionHeading>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[2px]">
-          {boss.roles.map((role, i) => {
-            const { ref, visible } = useReveal()  // eslint-disable-line
-            return (
-              <div
-                key={i}
-                ref={ref}
-                className={`reveal delay-${Math.min(i + 1, 6)} ${visible ? 'visible' : ''} bg-[#0d1018] hover:bg-[#131720] transition-colors p-6 relative overflow-hidden`}
-              >
-                <div className="absolute top-0 left-0 right-0 h-[3px]" style={{ background: role.color }} />
-                <div className="text-[1.5rem] mb-3">{role.color === '#c0392b' || role.color === '#e8352a' ? '⚔️' : role.color === '#17a07c' || role.color === '#1db89a' ? '💚' : '🎯'}</div>
-                <div className="text-[1.4rem] tracking-[0.06em] mb-3" style={{ fontFamily: 'var(--font-bebas)', color: role.color }}>
-                  {role.label}
-                </div>
-                <p className="text-[13px] text-foreground/45 leading-[1.7]">{role.note}</p>
-              </div>
-            )
-          })}
+          {boss.roles.map((role, i) => (
+            <RoleCard key={i} role={role} index={i} />
+          ))}
         </div>
       </div>
     </section>
@@ -265,6 +272,48 @@ function LustBanner({ boss }: { boss: Boss }) {
 }
 
 /* ─── PHASE ACCORDION ────────────────────────── */
+function PhaseItem({ phase, index, color }: { phase: Boss['strat'][0]; index: number; color: string }) {
+  const { ref, visible } = useReveal()
+  return (
+    <details
+      ref={ref as React.Ref<HTMLDetailsElement>}
+      className={`reveal-left delay-${Math.min(index + 1, 6)} ${visible ? 'visible' : ''} bg-[#0d1018] overflow-hidden group`}
+      style={{ borderLeft: `3px solid ${color}` }}
+    >
+      <summary className="flex items-center gap-3 px-5 py-3.5 cursor-pointer select-none bg-[#0d1018] group-open:bg-[#131720] hover:bg-[#131720] transition-colors list-none">
+        <span
+          className="text-[12px] font-bold tracking-[0.1em] uppercase text-foreground flex-1"
+          style={{ fontFamily: 'var(--font-barlow-condensed)' }}
+        >
+          {phase.phase}
+        </span>
+        <svg className="w-3 h-3 text-foreground/25 transition-transform group-open:rotate-180 flex-shrink-0" viewBox="0 0 12 12" fill="none">
+          <path d="M2 4l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+        </svg>
+      </summary>
+      <div className="px-5 pb-5 pt-2 flex flex-col gap-3">
+        {phase.points.map((point, j) => (
+          <div key={j} className="flex gap-3 items-start">
+            {point.icon && <span className="text-sm flex-shrink-0 mt-0.5">{point.icon}</span>}
+            <div>
+              <span
+                className="text-[10px] font-bold tracking-[0.1em] uppercase mr-2"
+                style={{
+                  fontFamily: 'var(--font-barlow-condensed)',
+                  color: point.role === 'Tanks' ? '#c0392b' : point.role === 'Healers' ? '#17a07c' : point.role === 'DPS' ? '#2e8fdf' : 'rgba(255,255,255,0.35)',
+                }}
+              >
+                {point.role}
+              </span>
+              <span className="text-[13px] text-foreground/45 leading-[1.72]">{point.note}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </details>
+  )
+}
+
 function PhaseSection({ boss }: { boss: Boss }) {
   const color = ZONE_COLORS[boss.zc]
   if (!boss.strat.length) return null
@@ -275,48 +324,9 @@ function PhaseSection({ boss }: { boss: Boss }) {
         <SectionLabel>Strategy</SectionLabel>
         <SectionHeading>Phase by Phase</SectionHeading>
         <div className="flex flex-col gap-[2px]">
-          {boss.strat.map((phase, i) => {
-            const { ref, visible } = useReveal()  // eslint-disable-line
-            return (
-              <details
-                key={i}
-                ref={ref as any}
-                className={`reveal-left delay-${Math.min(i + 1, 6)} ${visible ? 'visible' : ''} bg-[#0d1018] overflow-hidden group`}
-                style={{ borderLeft: `3px solid ${color}` }}
-              >
-                <summary className="flex items-center gap-3 px-5 py-3.5 cursor-pointer select-none bg-[#0d1018] group-open:bg-[#131720] hover:bg-[#131720] transition-colors list-none">
-                  <span
-                    className="text-[12px] font-bold tracking-[0.1em] uppercase text-foreground flex-1"
-                    style={{ fontFamily: 'var(--font-barlow-condensed)' }}
-                  >
-                    {phase.phase}
-                  </span>
-                  <svg className="w-3 h-3 text-foreground/25 transition-transform group-open:rotate-180 flex-shrink-0" viewBox="0 0 12 12" fill="none">
-                    <path d="M2 4l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-                  </svg>
-                </summary>
-                <div className="px-5 pb-5 pt-2 flex flex-col gap-3">
-                  {phase.points.map((point, j) => (
-                    <div key={j} className="flex gap-3 items-start">
-                      {point.icon && <span className="text-sm flex-shrink-0 mt-0.5">{point.icon}</span>}
-                      <div>
-                        <span
-                          className="text-[10px] font-bold tracking-[0.1em] uppercase mr-2"
-                          style={{
-                            fontFamily: 'var(--font-barlow-condensed)',
-                            color: point.role === 'Tanks' ? '#c0392b' : point.role === 'Healers' ? '#17a07c' : point.role === 'DPS' ? '#2e8fdf' : 'rgba(255,255,255,0.35)',
-                          }}
-                        >
-                          {point.role}
-                        </span>
-                        <span className="text-[13px] text-foreground/45 leading-[1.72]">{point.note}</span>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </details>
-            )
-          })}
+          {boss.strat.map((phase, i) => (
+            <PhaseItem key={i} phase={phase} index={i} color={color} />
+          ))}
         </div>
       </div>
     </section>
@@ -436,9 +446,9 @@ function AbilityCard({ ability }: { ability: AbilityItem }) {
 }
 
 function AbilitiesSection({ boss }: { boss: Boss }) {
-  if (!boss.abilities.length) return null
-  const color = ZONE_COLORS[boss.zc]
   const { ref, visible } = useReveal()
+  const color = ZONE_COLORS[boss.zc]
+  if (!boss.abilities.length) return null
   return (
     <section className="py-16 px-6 md:px-12 lg:px-20 bg-[#0d1018]">
       <div className="max-w-[1200px] mx-auto">

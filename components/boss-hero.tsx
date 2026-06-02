@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
+import Image from 'next/image'
 import type { Boss } from '@/types/boss'
 import { ZONE_COLORS, ZONE_NAMES } from '@/types/boss'
 
@@ -176,10 +177,12 @@ export function BossHero({ boss }: { boss: Boss }) {
           >
             {/* Thumbnail */}
             <div className="relative w-[160px] h-[90px] flex-shrink-0 overflow-hidden bg-black">
-              <img
+              <Image
                 src={`https://img.youtube.com/vi/${boss.video}/mqdefault.jpg`}
                 alt="Video guide thumbnail"
-                className="w-full h-full object-cover opacity-75 group-hover:opacity-100 group-hover:scale-105 transition-all duration-300"
+                fill
+                className="object-cover opacity-75 group-hover:opacity-100 group-hover:scale-105 transition-all duration-300"
+                unoptimized
               />
               {/* Gradient over thumbnail */}
               <div className="absolute inset-0 bg-gradient-to-r from-transparent to-black/30" />
