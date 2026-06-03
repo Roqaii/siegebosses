@@ -247,3 +247,87 @@ git push
 - **Reveal animations** — CSS class-based (`reveal`, `reveal-left`, `delay-1` through `delay-6`) driven by IntersectionObserver. Each observer disconnects after firing to minimize ongoing memory.
 - **Scroll parallax** — HeroSection uses `requestAnimationFrame` throttled scroll listener to avoid re-rendering on every scroll pixel.
 - **Font strategy** — only the weights actually used in components are loaded. Bebas Neue (headings), Barlow (body), Barlow Condensed (labels, UI).
+
+---
+
+## Typography & Readability (Phase 5 — current state)
+
+All px-based font sizes have been scaled ×1.3 (rounded to nearest 0.5px) and opacity values on grey body text have been raised for legibility. Text shadow added to all low-opacity body text.
+
+### CSS utility (globals.css)
+```css
+.ts { text-shadow: 0 1px 4px rgba(0,0,0,0.9); }
+```
+Applied to all grey/amber body text elements for perceived contrast boost.
+
+### boss-content.tsx — font size reference (post-scale)
+
+| Element | Size |
+|---|---|
+| Section labels (FIGHT OVERVIEW, STRATEGY, etc.) | 17px |
+| THE ONE RULE label | 19.5px |
+| Fight overview paragraph | 19.5px |
+| Mechanic name | 15px |
+| KEY badge | 10.5px |
+| Mechanic description | 18px |
+| Heroic callout text | 18px |
+| "What Changes on Heroic" subtext | 17px |
+| Role card note | 18px |
+| Bloodlust/Heroism label | 12px |
+| Bloodlust text | 19.5px |
+| Phase accordion header | 15.5px |
+| Phase role label (inline style) | 15.5px |
+| Phase note | 18px |
+| Ability name | 17px |
+| Ability description | 18px |
+| Ability child name | 13.5px |
+| Ability child description | 17.5px |
+| Ability phase group header | 14.5px |
+| Boss nav Previous/Next label | 12px |
+| Boss nav boss name | 18px |
+
+### Opacity reference (post-update)
+
+| Element | Opacity |
+|---|---|
+| Section labels | `/75` |
+| Fight overview | `/70` |
+| Mechanic descriptions | `/65` |
+| Role card notes | `/65` |
+| Phase notes | `/80` |
+| Ability descriptions | `/68` |
+| Ability child descriptions | `/58` |
+| Heroic callout numbers | `rgba(196,138,40,0.45)` |
+| Heroic callout text | `rgba(220,165,50,0.95)` |
+| ALL role label | `rgba(255,255,255,0.65)` |
+
+### site-nav.tsx — font size reference (post-scale)
+
+| Element | Size |
+|---|---|
+| "10-Man · Tier 16" badge | 17px |
+| Zone name in header | 18px |
+| Boss name in header | 22px |
+| Overview fallback text | 17px |
+| All Bosses button | 18px |
+| Discord button | 15.5px |
+| Zone headers in popover | 17px |
+| Boss name in popover | 19.5px |
+| Boss subtitle in popover | 15.5px (italic, `/75` opacity) |
+| 3D badge | 10.5px |
+
+### boss-hero.tsx — font size reference (post-scale)
+
+| Element | Size |
+|---|---|
+| Back / breadcrumb links | 14.5px |
+| Boss eyebrow (Boss 09) | 15.5px |
+| Setup pills (Tanks, Healers, DPS) | 17px |
+| Video Guide label | 12px |
+| Watch on YouTube | 18px |
+| Full Heroic Walkthrough → | 14.5px |
+
+### Icon decisions
+- Tank icon: 🛡️ (used in both RoleCard and hero setup pills)
+- Healer icon: 💚
+- DPS icon: 🎯

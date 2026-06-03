@@ -1,10 +1,9 @@
-{
+﻿{
   "version": "0.0.1",
   "configurations": [
     {
-      "name": "next-dev",
-      "runtimeExecutable": "C:\\Program Files\\nodejs\\node.exe",
-      "runtimeArgs": ["C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js", "run", "dev"],
+      "name": "spline-demo",
+      "runtimeExecutable": "npm",
       "runtimeArgs": ["run", "dev"],
       "port": 3000
     }

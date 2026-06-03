@@ -28,7 +28,7 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
     <div ref={ref} className={`reveal ${visible ? 'visible' : ''} flex items-center gap-3 mb-3`}>
       <span
-        className="text-[10px] font-bold tracking-[0.38em] uppercase text-foreground/30"
+        className="text-[17px] font-bold tracking-[0.38em] uppercase text-foreground/75"
         style={{ fontFamily: 'var(--font-barlow-condensed)' }}
       >
         {children}
@@ -69,7 +69,7 @@ function RuleSection({ boss }: { boss: Boss }) {
 
         <div ref={ref} className={`reveal ${visible ? 'visible' : ''} relative`}>
           <p
-            className="text-[9px] font-bold tracking-[0.44em] uppercase mb-6 flex items-center gap-3"
+            className="text-[19.5px] font-bold tracking-[0.44em] uppercase mb-6 flex items-center gap-3"
             style={{ fontFamily: 'var(--font-barlow-condensed)', color }}
           >
             The one rule
@@ -95,7 +95,7 @@ function OverviewSection({ boss }: { boss: Boss }) {
       <div className="max-w-[900px] mx-auto">
         <SectionLabel>Fight Overview</SectionLabel>
         <div ref={ref} className={`reveal delay-1 ${visible ? 'visible' : ''}`}>
-          <p className="text-[15px] text-foreground/55 leading-[1.78] border-l-[3px] border-white/[0.1] pl-4 italic">
+          <p className="ts text-[19.5px] text-foreground/70 leading-[1.78] border-l-[3px] border-white/[0.1] pl-4 italic">
             {boss.overview}
           </p>
         </div>
@@ -132,18 +132,18 @@ function MechItem({ mech, index, color }: { mech: Boss['mechs'][0]; index: numbe
       <div className="px-4 py-3 flex-1">
         <div className="flex items-center gap-2 mb-1 flex-wrap">
           <span
-            className="text-[11.5px] font-bold tracking-[0.1em] uppercase text-foreground"
+            className="text-[15px] font-bold tracking-[0.1em] uppercase text-foreground"
             style={{ fontFamily: 'var(--font-barlow-condensed)' }}
           >
             {mech.name}
           </span>
           {mech.important && (
-            <span className="text-[8px] font-bold tracking-[0.18em] uppercase px-1.5 py-[1px] rounded-[2px] bg-red-900/30 border border-red-700/40 text-red-400">
+            <span className="text-[10.5px] font-bold tracking-[0.18em] uppercase px-1.5 py-[1px] rounded-[2px] bg-red-900/30 border border-red-700/40 text-red-400">
               KEY
             </span>
           )}
         </div>
-        <p className="text-[13px] text-foreground/45 leading-[1.65]">{mech.desc}</p>
+        <p className="ts text-[18px] text-foreground/65 leading-[1.65]">{mech.desc}</p>
       </div>
     </div>
   )
@@ -175,10 +175,10 @@ function HeroicItem({ item, index }: { item: string; index: number }) {
       className={`reveal delay-${Math.min(index + 1, 6)} ${visible ? 'visible' : ''} bg-[#0d1018] px-6 py-5 relative`}
     >
       <div className="absolute top-5 left-0 w-[3px] h-[calc(100%-2.5rem)] bg-[#c48a28] rounded-r-sm" />
-      <div className="text-[2.2rem] leading-none text-[rgba(196,138,40,0.18)] mb-1" style={{ fontFamily: 'var(--font-bebas)' }}>
+      <div className="text-[2.2rem] leading-none text-[rgba(196,138,40,0.45)] mb-1" style={{ fontFamily: 'var(--font-bebas)' }}>
         {String(index + 1).padStart(2, '0')}
       </div>
-      <p className="text-[13px] text-[rgba(220,165,50,0.8)] leading-[1.65]">{item}</p>
+      <p className="ts text-[18px] text-[rgba(220,165,50,0.95)] leading-[1.65]">{item}</p>
     </div>
   )
 }
@@ -192,7 +192,7 @@ function HeroicSection({ boss }: { boss: Boss }) {
           <h2 className="text-[2rem] tracking-[0.08em] text-[#dfa838]" style={{ fontFamily: 'var(--font-bebas)' }}>
             Heroic Callouts
           </h2>
-          <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-[#c48a28] opacity-70" style={{ fontFamily: 'var(--font-barlow-condensed)' }}>
+          <span className="text-[17px] font-bold tracking-[0.2em] uppercase text-[#c48a28]" style={{ fontFamily: 'var(--font-barlow-condensed)' }}>
             What changes on Heroic
           </span>
         </div>
@@ -209,7 +209,7 @@ function HeroicSection({ boss }: { boss: Boss }) {
 /* ─── ROLES ──────────────────────────────────── */
 function RoleCard({ role, index }: { role: Boss['roles'][0]; index: number }) {
   const { ref, visible } = useReveal()
-  const icon = role.color === '#c0392b' || role.color === '#e8352a' ? '⚔️' : role.color === '#17a07c' || role.color === '#1db89a' ? '💚' : '🎯'
+  const icon = role.color === '#c0392b' || role.color === '#e8352a' ? '🛡️' : role.color === '#17a07c' || role.color === '#1db89a' ? '💚' : '🎯'
   return (
     <div
       ref={ref}
@@ -220,7 +220,7 @@ function RoleCard({ role, index }: { role: Boss['roles'][0]; index: number }) {
       <div className="text-[1.4rem] tracking-[0.06em] mb-3" style={{ fontFamily: 'var(--font-bebas)', color: role.color }}>
         {role.label}
       </div>
-      <p className="text-[13px] text-foreground/45 leading-[1.7]">{role.note}</p>
+      <p className="ts text-[18px] text-foreground/65 leading-[1.7]">{role.note}</p>
     </div>
   )
 }
@@ -261,10 +261,10 @@ function LustBanner({ boss }: { boss: Boss }) {
         </div>
         <span className="text-2xl flex-shrink-0">🔥</span>
         <div>
-          <p className="text-[9px] font-bold tracking-[0.34em] uppercase text-white/55 mb-1" style={{ fontFamily: 'var(--font-barlow-condensed)' }}>
+          <p className="text-[12px] font-bold tracking-[0.34em] uppercase text-white/55 mb-1" style={{ fontFamily: 'var(--font-barlow-condensed)' }}>
             Bloodlust / Heroism / Time Warp
           </p>
-          <p className="text-[15px] font-bold text-white leading-[1.45]">{boss.lust}</p>
+          <p className="text-[19.5px] font-bold text-white leading-[1.45]">{boss.lust}</p>
         </div>
       </div>
     </div>
@@ -282,7 +282,7 @@ function PhaseItem({ phase, index, color }: { phase: Boss['strat'][0]; index: nu
     >
       <summary className="flex items-center gap-3 px-5 py-3.5 cursor-pointer select-none bg-[#0d1018] group-open:bg-[#131720] hover:bg-[#131720] transition-colors list-none">
         <span
-          className="text-[12px] font-bold tracking-[0.1em] uppercase text-foreground flex-1"
+          className="text-[15.5px] font-bold tracking-[0.1em] uppercase text-foreground flex-1"
           style={{ fontFamily: 'var(--font-barlow-condensed)' }}
         >
           {phase.phase}
@@ -300,12 +300,13 @@ function PhaseItem({ phase, index, color }: { phase: Boss['strat'][0]; index: nu
                 className="text-[10px] font-bold tracking-[0.1em] uppercase mr-2"
                 style={{
                   fontFamily: 'var(--font-barlow-condensed)',
-                  color: point.role === 'Tanks' ? '#c0392b' : point.role === 'Healers' ? '#17a07c' : point.role === 'DPS' ? '#2e8fdf' : 'rgba(255,255,255,0.35)',
+                  fontSize: '15.5px',
+                  color: point.role === 'Tanks' ? '#c0392b' : point.role === 'Healers' ? '#17a07c' : point.role === 'DPS' ? '#2e8fdf' : 'rgba(255,255,255,0.65)',
                 }}
               >
                 {point.role}
               </span>
-              <span className="text-[13px] text-foreground/45 leading-[1.72]">{point.note}</span>
+              <span className="ts text-[18px] text-foreground/80 leading-[1.72]">{point.note}</span>
             </div>
           </div>
         ))}
@@ -399,7 +400,7 @@ function AbilityCard({ ability }: { ability: AbilityItem }) {
 
         {/* name */}
         <span
-          className="flex-1 text-[13px] font-bold tracking-[0.07em] uppercase text-foreground"
+          className="flex-1 text-[17px] font-bold tracking-[0.07em] uppercase text-foreground"
           style={{ fontFamily: 'var(--font-barlow-condensed)' }}
         >
           {ability.name}
@@ -424,18 +425,18 @@ function AbilityCard({ ability }: { ability: AbilityItem }) {
 
       {/* body */}
       <div className="px-4 pb-4 pt-1 pl-[3.75rem]">
-        <p className="text-[13.5px] text-foreground/50 leading-[1.72]">{ability.desc}</p>
+        <p className="ts text-[18px] text-foreground/68 leading-[1.72]">{ability.desc}</p>
         {ability.children && (
           <div className="mt-3 border-l-2 border-white/[0.06] pl-3 flex flex-col gap-2">
             {ability.children.map((child, ci) => (
               <div key={ci} className="bg-white/[0.025] rounded-[3px] px-3 py-2.5">
                 <div
-                  className="text-[10.5px] font-bold tracking-[0.08em] uppercase text-foreground/55 mb-1"
+                  className="ts text-[13.5px] font-bold tracking-[0.08em] uppercase text-foreground/70 mb-1"
                   style={{ fontFamily: 'var(--font-barlow-condensed)' }}
                 >
                   {child.name}
                 </div>
-                <p className="text-[12.5px] text-foreground/38 leading-[1.65]">{child.desc}</p>
+                <p className="ts text-[17.5px] text-foreground/58 leading-[1.65]">{child.desc}</p>
               </div>
             ))}
           </div>
@@ -463,7 +464,7 @@ function AbilitiesSection({ boss }: { boss: Boss }) {
                 style={{ borderLeft: `3px solid ${color}` }}
               >
                 <span
-                  className="text-[11px] font-bold tracking-[0.2em] uppercase text-foreground/45"
+                  className="text-[14.5px] font-bold tracking-[0.2em] uppercase text-foreground/60"
                   style={{ fontFamily: 'var(--font-barlow-condensed)' }}
                 >
                   {phase.phase}
@@ -495,10 +496,10 @@ function BossNav({ prevBoss, nextBoss }: { prevBoss: Boss | null; nextBoss: Boss
           >
             <span className="text-foreground/30 group-hover:text-foreground/60 text-lg transition-colors">←</span>
             <div>
-              <p className="text-[9px] font-bold tracking-[0.28em] uppercase text-foreground/25 mb-1" style={{ fontFamily: 'var(--font-barlow-condensed)' }}>
+              <p className="text-[12px] font-bold tracking-[0.28em] uppercase text-foreground/25 mb-1" style={{ fontFamily: 'var(--font-barlow-condensed)' }}>
                 Previous
               </p>
-              <p className="text-[14px] font-bold tracking-[0.06em] text-foreground" style={{ fontFamily: 'var(--font-bebas)' }}>
+              <p className="text-[18px] font-bold tracking-[0.06em] text-foreground" style={{ fontFamily: 'var(--font-bebas)' }}>
                 {prevBoss.name}
               </p>
             </div>
@@ -511,10 +512,10 @@ function BossNav({ prevBoss, nextBoss }: { prevBoss: Boss | null; nextBoss: Boss
             className="group flex items-center justify-end gap-3 border border-white/[0.07] hover:border-white/15 bg-[#0d1018] hover:bg-[#131720] transition-all px-5 py-4 rounded-[3px] flex-1 max-w-xs text-right"
           >
             <div>
-              <p className="text-[9px] font-bold tracking-[0.28em] uppercase text-foreground/25 mb-1" style={{ fontFamily: 'var(--font-barlow-condensed)' }}>
+              <p className="text-[12px] font-bold tracking-[0.28em] uppercase text-foreground/25 mb-1" style={{ fontFamily: 'var(--font-barlow-condensed)' }}>
                 Next
               </p>
-              <p className="text-[14px] font-bold tracking-[0.06em] text-foreground" style={{ fontFamily: 'var(--font-bebas)' }}>
+              <p className="text-[18px] font-bold tracking-[0.06em] text-foreground" style={{ fontFamily: 'var(--font-bebas)' }}>
                 {nextBoss.name}
               </p>
             </div>

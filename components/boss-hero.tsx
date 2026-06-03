@@ -75,14 +75,14 @@ export function BossHero({ boss }: { boss: Boss }) {
         <div className="flex items-center gap-2 mb-10 flex-wrap">
           <Link
             href="/"
-            className="inline-flex items-center gap-1.5 text-[11px] font-extrabold tracking-[0.1em] uppercase text-white/60 hover:text-white/90 border border-white/[0.12] hover:border-white/25 px-3 py-[5px] rounded-[3px] transition-all"
+            className="inline-flex items-center gap-1.5 text-[14.5px] font-extrabold tracking-[0.1em] uppercase text-white/60 hover:text-white/90 border border-white/[0.12] hover:border-white/25 px-3 py-[5px] rounded-[3px] transition-all"
             style={{ fontFamily: 'var(--font-barlow-condensed)' }}
           >
             ← Overview
           </Link>
           <span className="text-foreground/15 text-xs">/</span>
           <span
-            className="text-[11px] font-bold tracking-[0.08em] uppercase px-2.5 py-[5px] rounded-[2px] border"
+            className="text-[14.5px] font-bold tracking-[0.08em] uppercase px-2.5 py-[5px] rounded-[2px] border"
             style={{
               fontFamily: 'var(--font-barlow-condensed)',
               color,
@@ -98,7 +98,7 @@ export function BossHero({ boss }: { boss: Boss }) {
         <div className="flex items-center gap-3 mb-5">
           <div className="w-6 h-[2px] rounded-sm" style={{ background: color }} />
           <p
-            className="text-[12px] font-extrabold tracking-[0.38em] uppercase"
+            className="text-[15.5px] font-extrabold tracking-[0.38em] uppercase"
             style={{ fontFamily: 'var(--font-barlow-condensed)', color }}
           >
             Boss {String(boss.num).padStart(2, '0')}
@@ -130,13 +130,13 @@ export function BossHero({ boss }: { boss: Boss }) {
         {/* Setup pills */}
         <div className="flex items-center gap-2 flex-wrap mb-8">
           {[
-            { icon: '⚔️', val: `${boss.setup.t} Tanks` },
+            { icon: '🛡️', val: `${boss.setup.t} Tanks` },
             { icon: '💚', val: `${boss.setup.h} Healers` },
             { icon: '🎯', val: `${boss.setup.d} DPS` },
           ].map((pill) => (
             <div
               key={pill.icon}
-              className="flex items-center gap-1.5 text-[13px] font-extrabold tracking-[0.06em] px-4 py-2 bg-white/[0.07] border border-white/[0.15] rounded-[3px] text-white/80"
+              className="flex items-center gap-1.5 text-[17px] font-extrabold tracking-[0.06em] px-4 py-2 bg-white/[0.07] border border-white/[0.15] rounded-[3px] text-white/80"
               style={{ fontFamily: 'var(--font-barlow-condensed)' }}
             >
               {pill.icon} {pill.val}
@@ -201,19 +201,19 @@ export function BossHero({ boss }: { boss: Boss }) {
             {/* Label */}
             <div className="pr-6">
               <p
-                className="text-[9px] font-bold tracking-[0.32em] uppercase mb-1.5"
+                className="text-[12px] font-bold tracking-[0.32em] uppercase mb-1.5"
                 style={{ fontFamily: 'var(--font-barlow-condensed)', color: 'rgba(255,255,255,0.35)' }}
               >
                 Video Guide
               </p>
               <p
-                className="text-[14px] font-bold tracking-[0.04em] text-white/80 group-hover:text-white transition-colors"
+                className="text-[18px] font-bold tracking-[0.04em] text-white/80 group-hover:text-white transition-colors"
                 style={{ fontFamily: 'var(--font-barlow-condensed)' }}
               >
                 Watch on YouTube
               </p>
               <p
-                className="text-[11px] tracking-[0.06em] mt-0.5"
+                className="text-[14.5px] tracking-[0.06em] mt-0.5"
                 style={{ fontFamily: 'var(--font-barlow-condensed)', color: 'rgba(255,255,255,0.25)' }}
               >
                 Full Heroic Walkthrough →
