@@ -65,7 +65,6 @@ export function GarroshScene() {
     <div ref={containerRef} className="w-full h-full">
       <Canvas
         camera={{ position: [0, 1.5, 5], fov: 34 }}
-        shadows
         gl={{ antialias: true }}
       >
         <Suspense fallback={null}>
@@ -74,7 +73,6 @@ export function GarroshScene() {
             position={[5, 8, 5]}
             intensity={1.4}
             color="#e8d5c0"
-            castShadow
           />
           <pointLight position={[-4, 2, -2]} intensity={0.8} color="#e84a2a" />
           <pointLight position={[4, 0, 3]} intensity={0.4} color="#2e8fdf" />

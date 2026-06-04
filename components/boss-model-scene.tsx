@@ -109,12 +109,11 @@ export function BossModelScene({ modelFile }: { modelFile: string }) {
     <div className="w-full h-full">
       <Canvas
         camera={{ position: [0, config.camY, config.camZ], fov: config.fov }}
-        shadows
         gl={{ antialias: true }}
       >
         <Suspense fallback={null}>
           <ambientLight intensity={0.3} />
-          <directionalLight position={[5, 8, 5]} intensity={1.4} color="#e8d5c0" castShadow />
+          <directionalLight position={[5, 8, 5]} intensity={1.4} color="#e8d5c0" />
           <pointLight position={[-4, 2, -2]} intensity={0.8} color="#e84a2a" />
           <pointLight position={[4, 0, 3]} intensity={0.4} color="#2e8fdf" />
           <BossModel modelFile={modelFile} mouseX={mouse.x} mouseY={mouse.y} config={config} />
