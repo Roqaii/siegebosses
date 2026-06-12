@@ -32,7 +32,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       className={`dark ${bebasNeue.variable} ${barlow.variable} ${barlowCondensed.variable}`}
     >
       <head>
-        <link rel="preconnect" href="https://img.youtube.com" />
+        <link rel="preconnect" href="https://img.youtube.com" crossOrigin="anonymous" />
       </head>
       <body style={{ fontFamily: 'var(--font-barlow), sans-serif' }}>
         {children}

@@ -1,6 +1,5 @@
 'use client'
 
-import { useState, useEffect } from 'react'
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
 import Image from 'next/image'
@@ -13,9 +12,6 @@ const BossModelScene = dynamic(
 )
 
 export function BossHero({ boss }: { boss: Boss }) {
-  const [mounted, setMounted] = useState(false)
-  useEffect(() => setMounted(true), [])
-
   const color = ZONE_COLORS[boss.zc]
   const zoneName = ZONE_NAMES[boss.zc]
   const hasModel = !!boss.modelFile
@@ -43,7 +39,7 @@ export function BossHero({ boss }: { boss: Boss }) {
       </div>
 
       {/* 3D Model — only for bosses that have one */}
-      {hasModel && mounted && (
+      {hasModel && (
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute inset-0 md:left-[20%]">
             <BossModelScene modelFile={boss.modelFile!} />
@@ -182,6 +178,7 @@ export function BossHero({ boss }: { boss: Boss }) {
                 alt="Video guide thumbnail"
                 fill
                 sizes="160px"
+                priority
                 className="object-cover opacity-75 group-hover:opacity-100 group-hover:scale-105 transition-all duration-300"
               />
               {/* Gradient over thumbnail */}

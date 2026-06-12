@@ -4,8 +4,8 @@ import { useEffect, useRef, useState } from 'react'
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
 
-const GarroshScene = dynamic(
-  () => import('@/components/garrosh-scene').then((m) => m.GarroshScene),
+const BossModelScene = dynamic(
+  () => import('@/components/boss-model-scene').then((m) => m.BossModelScene),
   { ssr: false }
 )
 
@@ -53,7 +53,7 @@ export function HeroSection() {
       {/* 3D model — full right side / full background on mobile */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute inset-0 md:left-[40%]">
-          {mounted && <GarroshScene />}
+          {mounted && <BossModelScene modelFile="garrosh2.glb" />}
         </div>
         {/* Gradient overlay on model — fade to left */}
         <div className="absolute inset-0 bg-gradient-to-r from-[#060810] via-[#060810]/80 md:via-[#060810]/50 to-transparent" />

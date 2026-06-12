@@ -1,8 +1,8 @@
 'use client'
 
-import { Suspense, useRef, useEffect, useState } from 'react'
+import { Suspense, useRef, useEffect } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
-import { useGLTF, Environment, ContactShadows } from '@react-three/drei'
+import { useGLTF, ContactShadows } from '@react-three/drei'
 
 // Set Draco decoder path so compressed GLB files load correctly
 useGLTF.setDecoderPath('/draco/')
@@ -52,13 +52,11 @@ const DEFAULT_CONFIG = {
 
 function BossModel({
   modelFile,
-  mouseX,
-  mouseY,
+  mouseRef,
   config,
 }: {
   modelFile: string
-  mouseX: number
-  mouseY: number
+  mouseRef: React.RefObject<{ x: number; y: number }>
   config: typeof DEFAULT_CONFIG
 }) {
   const { scene } = useGLTF(`/models/${modelFile}`)
@@ -74,9 +72,9 @@ function BossModel({
     // Float
     ref.current.position.y = config.posY + Math.sin(clock.current * 0.7) * 0.08
 
-    // Mouse parallax — subtle
-    targetRotX.current = mouseY * 0.04
-    targetRotY.current = config.baseY + mouseX * 0.06
+    // Mouse parallax — read ref directly, no re-render
+    targetRotX.current = mouseRef.current.y * 0.04
+    targetRotY.current = config.baseY + mouseRef.current.x * 0.06
 
     // Smooth lerp
     ref.current.rotation.x += (targetRotX.current - ref.current.rotation.x) * 0.04
@@ -92,14 +90,14 @@ function BossModel({
 
 export function BossModelScene({ modelFile }: { modelFile: string }) {
   const config = MODEL_CONFIG[modelFile] ?? DEFAULT_CONFIG
-  const [mouse, setMouse] = useState({ x: 0, y: 0 })
+  const mouseRef = useRef({ x: 0, y: 0 })
 
   useEffect(() => {
     const onMove = (e: MouseEvent) => {
-      setMouse({
+      mouseRef.current = {
         x: (e.clientX / window.innerWidth - 0.5) * 2,
         y: -(e.clientY / window.innerHeight - 0.5) * 2,
-      })
+      }
     }
     window.addEventListener('mousemove', onMove, { passive: true })
     return () => window.removeEventListener('mousemove', onMove)
@@ -110,15 +108,15 @@ export function BossModelScene({ modelFile }: { modelFile: string }) {
       <Canvas
         camera={{ position: [0, config.camY, config.camZ], fov: config.fov }}
         gl={{ antialias: true }}
+        dpr={[1, 2]}
       >
         <Suspense fallback={null}>
           <ambientLight intensity={0.3} />
           <directionalLight position={[5, 8, 5]} intensity={1.4} color="#e8d5c0" />
           <pointLight position={[-4, 2, -2]} intensity={0.8} color="#e84a2a" />
           <pointLight position={[4, 0, 3]} intensity={0.4} color="#2e8fdf" />
-          <BossModel modelFile={modelFile} mouseX={mouse.x} mouseY={mouse.y} config={config} />
+          <BossModel modelFile={modelFile} mouseRef={mouseRef} config={config} />
           <ContactShadows position={[0, config.posY, 0]} opacity={0.35} scale={6} blur={2.5} far={4} color="#000" />
-          <Environment preset="night" />
         </Suspense>
       </Canvas>
     </div>

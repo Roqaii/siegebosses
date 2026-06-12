@@ -6,6 +6,9 @@ import { BOSSES } from '@/data/bosses'
 export default function HomePage() {
   return (
     <>
+      <head>
+        <link rel="preload" href="/models/garrosh2.glb" as="fetch" crossOrigin="anonymous" />
+      </head>
       <SiteNav />
       <HeroSection />
       <BossGrid bosses={BOSSES} />
